@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 router.get('/', (_req: Request, res: Response) => {
-    res.send('hola registro de notas');
+    res.send('hola RDN');
 });
 
 
