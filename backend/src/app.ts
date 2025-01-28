@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import "dotenv/config";
+import { sequelize } from './database';
 
 
 const app: Application = express();
@@ -23,6 +24,14 @@ router.get('/', (_req: Request, res: Response) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
-});
+const server = async () => {
+    try {
+        await sequelize();
+        app.listen(PORT, () => {
+            console.log(`Servidor escuchando en: http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.log("No se puede iniciar el servidor", error);
+    }
+}
+server();
