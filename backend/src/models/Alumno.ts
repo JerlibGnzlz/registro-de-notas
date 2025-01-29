@@ -38,6 +38,5 @@ Alumno.init({
 }, {
     sequelize: db,
     modelName: 'alumno',
-    timestamps: true,
-    paranoid: true,
+    timestamps: false,
 })
