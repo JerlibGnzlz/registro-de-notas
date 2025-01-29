@@ -21,11 +21,11 @@ Notas.init({
         allowNull: false,
     },
     calificacion: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 }, {
     sequelize: db,
     modelName: 'notas',
-    timestamps: true,
+    timestamps: false,
 })

@@ -1,32 +1,37 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import "dotenv/config";
-import { sequelize } from './database';
-
+import { db } from './database';
+import { router } from './routes';
+import './models/Notas';
+import './models/Alumno';
+import './models/Administrador';
 
 const app: Application = express();
 
 
 const PORT = process.env.PORT || 3000;
 
-const router = express.Router();
 
-app.use(router);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(router);
 
-
-router.get('/', (_req: Request, res: Response) => {
-    res.send('hola RDN');
-});
 
 
 const server = async () => {
+
     try {
-        await sequelize();
+        await db.authenticate();
+        console.log("Conexión exitosa a Sequelize");
+
+        await db.sync({ force: true });
+        console.log("Conexión exitosa a la base de datos");
+
+
         app.listen(PORT, () => {
             console.log(`Servidor escuchando en: http://localhost:${PORT}`);
         });

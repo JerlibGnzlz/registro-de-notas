@@ -33,6 +33,6 @@ Administrador.init({
 }, {
     sequelize: db,
     modelName: 'administrador',
-    timestamps: true,
+    timestamps: false,
     paranoid: true,
 })
