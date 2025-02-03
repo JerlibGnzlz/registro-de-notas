@@ -18,7 +18,6 @@ export const register = async (req: Request, res: Response) => {
             res.status(400).json({ error: "Todos los campos son requeridos" });
         }
 
-        // res.status(200).json({})
 
     } catch (error) {
         res.status(500).json({ error: "Error al registrar la nota" });

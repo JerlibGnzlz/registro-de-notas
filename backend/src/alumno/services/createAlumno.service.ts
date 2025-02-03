@@ -12,12 +12,14 @@ export const AlumnoRegister = async (
     try {
         const existAlum = await Alumno.findOne({
             where: { email, administradorId },
-            include: { model: Administrador }
+            include: {
+                model: Administrador
+            }
 
         });
 
         if (existAlum) {
-            return { message: 'El alumno ya existe', statuscode: 400, data: existAlum };
+            return { message: 'El alumno ya existe', statuscode: 201 };
         }
 
         const newAlum = await Alumno.create({
