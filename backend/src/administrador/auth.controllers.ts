@@ -12,6 +12,6 @@ export const register = async (req: Request, res: Response) => {
         res.status(200).json(newUser)
 
     } catch (error) {
-        res.status(500).json({ error: "Error al registrar Usuario" });
+        res.status(500).json({ error: "Error al registrar el Administrador" });
     }
 };
