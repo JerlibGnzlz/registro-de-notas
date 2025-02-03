@@ -4,16 +4,20 @@ import { AlumnoRegister } from "./services/createAlumno.service";
 
 export const register = async (req: Request, res: Response) => {
 
-    const { name, email, dni, fecha_nacimiento } = req.body as IAlumno
+    const { name, email, dni, fecha_nacimiento, administradorId } = req.body as IAlumno
 
-    if (!name || !email || !dni || !fecha_nacimiento) {
+    if (!name || !email || !dni || !fecha_nacimiento || !administradorId) {
         res.status(400).json({ error: "Todos los campos son requeridos" });
     }
 
     try {
-        const newUser = await AlumnoRegister(name, email, dni, fecha_nacimiento.toString());
+        if (name && email && dni && fecha_nacimiento && administradorId) {
+            const newUser = await AlumnoRegister(name, email, dni, fecha_nacimiento.toString(), administradorId);
+            res.status(200).json(newUser)
+        } else {
+            res.status(400).json({ error: "Todos los campos son requeridos" });
+        }
 
-        res.status(200).json(newUser)
 
     } catch (error) {
         res.status(500).json({ error: "Error al registrar el Alumno" });

@@ -9,7 +9,6 @@ Alumno.belongsTo(Administrador);
 Alumno.hasMany(Notas);
 Notas.belongsTo(Alumno);
 
-
 Administrador.hasMany(Notas);
 Notas.belongsTo(Administrador);
 

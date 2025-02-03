@@ -4,4 +4,5 @@ export interface IAlumno {
     email: string;
     dni: string
     fecha_nacimiento: Date | string;
+    administradorId?: string | undefined
 }

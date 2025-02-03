@@ -1,10 +1,20 @@
-import { Alumno } from '../../models';
+import { Alumno, Administrador } from '../../models';
 
 
-export const AlumnoRegister = async (name: string, email: string, dni: string, fecha_nacimiento: string) => {
+export const AlumnoRegister = async (
+    name: string,
+    email: string,
+    dni: string,
+    fecha_nacimiento: string,
+    administradorId: string
+) => {
 
     try {
-        const existAlum = await Alumno.findOne({ where: { email } });
+        const existAlum = await Alumno.findOne({
+            where: { email, administradorId },
+            include: { model: Administrador }
+
+        });
 
         if (existAlum) {
             return { message: 'El alumno ya existe', statuscode: 400, data: existAlum };
@@ -14,7 +24,8 @@ export const AlumnoRegister = async (name: string, email: string, dni: string, f
             name,
             email,
             dni,
-            fecha_nacimiento
+            fecha_nacimiento,
+            administradorId
         });
 
         if (newAlum) {

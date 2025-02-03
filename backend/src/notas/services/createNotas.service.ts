@@ -20,7 +20,7 @@ export const NotasRegister = async (
         console.log(existNota)
 
         if (existNota) {
-            return { message: 'La nota ya existe', statuscode: 400, data: existNota };
+            return { message: 'La nota ya existe', statuscode: 201 };
         }
 
         const newNota = await Notas.create({
