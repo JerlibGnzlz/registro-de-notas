@@ -14,9 +14,8 @@ export const AlumnoRegister = async (
             where: { email, administradorId },
             attributes: ["name"],
             include: {
-                model: Administrador, attributes: { exclude: ["password"] }
-            },
-
+                model: Administrador, attributes: ["name"]
+            }
         });
 
         if (existAlum) {

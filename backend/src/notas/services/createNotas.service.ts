@@ -14,8 +14,8 @@ export const NotasRegister = async (
             where: { materia, alumnoId },
             attributes: ["materia"],
             include: [
-                { model: Alumno, attributes: { exclude: ["dni", "fecha_nacimiento", "email"] } },
-                { model: Administrador, attributes: { exclude: ["", "password"] } }
+                { model: Alumno, attributes: ["name", "dni", "fecha_nacimiento"] },
+                { model: Administrador, attributes: ["name"] }
             ],
         });
         console.log(existNota)
