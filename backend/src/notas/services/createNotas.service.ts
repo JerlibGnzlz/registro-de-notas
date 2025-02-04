@@ -11,16 +11,17 @@ export const NotasRegister = async (
 
     try {
         const existNota = await Notas.findOne({
-            where: { materia, alumnoId, administradorId },
+            where: { materia, alumnoId },
+            attributes: ["materia"],
             include: [
-                { model: Alumno },
-                { model: Administrador }
-            ]
+                { model: Alumno, attributes: { exclude: ["dni", "fecha_nacimiento", "email"] } },
+                { model: Administrador, attributes: { exclude: ["", "password"] } }
+            ],
         });
         console.log(existNota)
 
         if (existNota) {
-            return { message: 'La nota ya existe', statuscode: 201 };
+            return { message: 'La nota ya existe', statuscode: 201, data: [existNota] };
         }
 
         const newNota = await Notas.create({
