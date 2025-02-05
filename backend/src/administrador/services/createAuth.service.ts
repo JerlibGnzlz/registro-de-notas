@@ -1,3 +1,4 @@
+import { passwordHashado } from '../../helpers/bycript';
 import { Administrador } from '../../models';
 
 
@@ -10,10 +11,12 @@ export const AuthRegister = async (name: string, email: string, password: string
             return { message: 'El administrador ya existe', statuscode: 400, data: existAdmin };
         }
 
+        const encripado = await passwordHashado(password)
+
         const newAdmin = await Administrador.create({
             name,
             email,
-            password
+            password: encripado
         });
 
         if (newAdmin) {
