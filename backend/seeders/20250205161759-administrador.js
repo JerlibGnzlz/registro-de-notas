@@ -1,25 +1,3 @@
-// 'use strict';
-
-// /** @type {import('sequelize-cli').Migration} */
-// module.exports = {
-//   up: (queryInterface, Sequelize) => {
-//     return queryInterface.bulkInsert('administrador', [
-//       {
-//         id: "699089c1-ada7-4069-b782-6b8f8f90ae58",
-//         name: 'Jerlib Gonzalez',
-//         email: 'admin@rnd.com',
-//         password: '12345',
-//         createdAt: new Date(),
-//         updatedAt: new Date(),
-//       },
-//     ]);
-
-//   },
-//   down: (queryInterface, Sequelize) => {
-//     return queryInterface.bulkDelete('administrador', null, {});
-//   },
-// };
-
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -28,9 +6,9 @@ module.exports = {
     await queryInterface.bulkInsert('administrador', [
       {
         id: "699089c1-ada7-4069-b782-6b8f8f90ae58",
-        name: 'Jerlib Gonzalez',
-        email: 'admin@rnd.com',
-        password: '12345',
+        name: "Jerlib Gonzalez",
+        email: "admin@rnd.com",
+        password: "$2b$10$afeLdthSiuIB2UkNHXiMO.CCeHeYWlZvhvBtMKHlK8MvjM.5Ei.Ce",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
