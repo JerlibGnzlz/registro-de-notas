@@ -7,6 +7,7 @@ import './models/Notas';
 import './models/Alumno';
 import './models/Administrador';
 import { indexRoutes } from './routes/index.routes';
+// import { runSeeder } from './seeders/runSeeders';
 
 
 const app: Application = express();
@@ -30,8 +31,12 @@ const server = async () => {
         await db.authenticate();
         console.log("Conexión exitosa a Sequelize");
 
-        await db.sync({ force: true });
+        // await runSeeder();
+        // console.log('Servidor iniciado con seeder ejecutado.');
+
+        await db.sync({ force: false });
         console.log("Conexión exitosa a la base de datos");
+
 
 
         app.listen(PORT, () => {
@@ -42,3 +47,4 @@ const server = async () => {
     }
 }
 server();
+
