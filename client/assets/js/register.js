@@ -22,6 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        if (passwordInput.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres");
+            return;
+          }
+
         alert("Registro exitoso");
 
 
