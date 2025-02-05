@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Notas</title>
-    <link rel="stylesheet" href="./register.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>Registro de Notas</title>
 </head>
-<body>
-    <header>
-        <h1>Welcome a Registro de Notas</h1>
-    </header>
-    <nav>
-        <h4 id="inicio">Inicio</h4>
-        <a href="./login.html"><h4>Iniciar Sesión</h4></a>
-        <a href="./register.html"><h4>Registrarse</h4></a>
-    </nav>
-    
-    <div class="formulario">
-        <form id="registerForm">
-            <label for="nameInput">Nombre</label>
-            <input type="text" id="nameInput">
+<body class="bg-gray-200 relative min-h-screen">
+  <!-- Encabezado centrado -->
+  <header class="text-center py-4">
+    <h1 class="text-xl font-bold">Welcome a Registro de Notas</h1>
+  </header>
+  
+  <!-- Menú de navegación posicionado en la esquina superior derecha -->
+  <nav class="absolute top-4 right-4 flex flex-col items-end space-y-1">
+    <h4 id="inicio" class="font-medium">Inicio</h4>
+    <a href="./login.html" class="hover:underline">
+      <h4 class="font-medium">Iniciar Sesión</h4>
+    </a>
+    <a href="./register.html" class="hover:underline">
+      <h4 class="font-medium">Registrarse</h4>
+    </a>
+  </nav>
+  
+  <!-- Contenedor para centrar el formulario en la pantalla -->
+  <div class="flex items-center justify-center min-h-screen">
+    <form id="registerForm" class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md">
+      <div class="flex flex-col w-full">
+        <label for="nameInput" class="mb-1">Nombre</label>
+        <input type="text" id="nameInput" class="border p-2 rounded" placeholder="Ingresa tu nombre">
+      </div>
 
-            <label for="emailInput">Correo Electrónico</label>
-            <input type="email" id="emailInput">
+      <div class="flex flex-col w-full">
+        <label for="emailInput" class="mb-1">Correo Electrónico</label>
+        <input type="email" id="emailInput" class="border p-2 rounded" placeholder="ejemplo@correo.com">
+      </div>
 
-            <label for="passwordInput">Contraseña</label>
-            <input type="password" id="passwordInput">
+      <div class="flex flex-col w-full">
+        <label for="passwordInput" class="mb-1">Contraseña</label>
+        <input type="password" id="passwordInput" class="border p-2 rounded">
+      </div>
 
-            <label for="passwordConfirm">Confirmar Contraseña</label>
-            <input type="password" id="passwordConfirm">
+      <div class="flex flex-col w-full">
+        <label for="passwordConfirm" class="mb-1">Confirmar Contraseña</label>
+        <input type="password" id="passwordConfirm" class="border p-2 rounded">
+      </div>
 
-            <button type="submit" id="registerButton">Enviar</button>
-        </form>
-    </div>
+      <button type="submit" id="registerButton" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Enviar
+      </button>
+    </form>
+  </div>
 
-    <footer></footer>
-
-    <script src="../../assets/js/register.js"></script>
+  <footer class="text-center py-4">
+    Pie de página
+  </footer>
 </body>
 </html>
+
