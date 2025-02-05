@@ -8,8 +8,8 @@ module.exports = {
     return queryInterface.bulkInsert('administrador', [
       {
         id: "65648d54-f892-48eb-9368-346a853aeaee",
-        name: 'John',
-        email: 'example@example.com',
+        name: 'Jerlib',
+        email: 'admin@rdn.com',
         password: "1234",
         createdAt: new Date(),
         updatedAt: new Date(),
