@@ -7,7 +7,6 @@ import './models/Notas';
 import './models/Alumno';
 import './models/Administrador';
 import { indexRoutes } from './routes/index.routes';
-// import { runSeeder } from './seeders/runSeeders';
 
 
 const app: Application = express();
@@ -23,7 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', indexRoutes);
 
-
+const isDev = process.env.NODE_ENV === "development"
+// const isDev = process.env.NODE_ENV === "production"
 
 const server = async () => {
 
@@ -31,13 +31,11 @@ const server = async () => {
         await db.authenticate();
         console.log("Conexión exitosa a Sequelize");
 
-        // await runSeeder();
-        // console.log('Servidor iniciado con seeder ejecutado.');
 
-        await db.sync({ force: false });
-        console.log("Conexión exitosa a la base de datos");
-
-
+        await db.sync({ force: isDev });
+        console.log(
+            `Base de datos sincronizada (${isDev ? 'force: true' : 'force: false'})`
+        );
 
         app.listen(PORT, () => {
             console.log(`Servidor escuchando en: http://localhost:${PORT}`);
