@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         alert("Registro exitoso");
 
-        // Opcional: Enviar el formulario
+
         form.submit();
     });
 });
