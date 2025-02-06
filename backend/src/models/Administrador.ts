@@ -36,5 +36,5 @@ Administrador.init({
     modelName: 'administrador',
     timestamps: true,
     paranoid: true,
-    deletedAt: 'destroyTime',
+    deletedAt: 'borrado-Logico',
 })
