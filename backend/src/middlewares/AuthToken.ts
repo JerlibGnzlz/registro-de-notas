@@ -20,7 +20,7 @@ export const authToken = async (req: Request, res: Response, next: NextFunction)
             return next()
 
         } catch (error) {
-            return res.status(400).json({ message: "Sesion o token invalido" })
+            res.status(400).json({ message: "Sesion o token invalido" })
         }
     }
     return next()
