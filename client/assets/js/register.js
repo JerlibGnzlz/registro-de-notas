@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
             emailInput.value.trim() === "" || 
             passwordInput.value.trim() === "" || 
             confirmPasswordInput.value.trim() === "") {
-            alert("Todos los campos son obligatorios");
+                Swal.fire({
+                    icon: "error",
+                    title: "Campos obligatorios",
+                    text: "Todos los campos son obligatorios.",
+                  });
             return;
         }
 
