@@ -1,5 +1,5 @@
-import { passwordCorrecto, passwordHashado } from '../../helpers/bycript';
-import { generarToken } from '../../helpers/JwToken';
+import { passwordHashado } from '../../helpers/bycript';
+// import { generarToken } from '../../helpers/JwToken';
 import { Administrador } from '../../models';
 
 export const AuthRegister = async (name: string, email: string, password: string) => {
@@ -26,33 +26,35 @@ export const AuthRegister = async (name: string, email: string, password: string
             };
         }
 
-        const hashedPassword = await passwordHashado(password);
+        const encrypted = await passwordHashado(password);
 
         const newAdmin = await Administrador.create({
             name,
             email,
-            password: hashedPassword,
+            password: encrypted,
         });
 
 
-        const compararPassword = await passwordCorrecto(password, hashedPassword)
+        // const compararPassword = await passwordCorrecto(password, encrypted)
 
-        let data;
+        // // let data
 
-        if (compararPassword) {
-            const token = await generarToken(newAdmin.email)
+        // let data;
 
-            data = {
-                user: newAdmin,
-                token
-            }
+        // if (compararPassword) {
+        //     const token = await generarToken(newAdmin.email)
 
-        }
+        //     data = {
+        //         user: newAdmin,
+        //         token
+        //     }
+
+        // }
 
         return {
             message: 'Administrador creado exitosamente',
             statusCode: 201,
-            data
+            newAdmin
         };
     } catch (error) {
         return {
