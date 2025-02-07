@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { IAdministrador } from "../interfaces/IAdministrador";
-import { AuthRegister } from "./services/createAuth.service";
+import { IAdministrador } from "../../interfaces/IAdministrador";
+import { AuthRegister } from "../services/createAuth.service";
 
 export const register = async (req: Request, res: Response) => {
 

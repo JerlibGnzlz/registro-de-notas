@@ -5,4 +5,5 @@ export interface IAdministrador {
     password: string;
     createdAt?: Date,
     updatedAt?: Date,
+    deletedAt?: boolean
 }

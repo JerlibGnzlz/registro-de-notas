@@ -8,6 +8,7 @@ export class Administrador extends Model<IAdministrador> {
     name!: string;
     email!: string;
     password!: string;
+    deletedAt!: boolean
 }
 
 
@@ -35,4 +36,5 @@ Administrador.init({
     modelName: 'administrador',
     timestamps: true,
     paranoid: true,
+    deletedAt: 'borrado-Logico',
 })
