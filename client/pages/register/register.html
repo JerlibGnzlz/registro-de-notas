@@ -6,14 +6,14 @@
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   <title>Registro de Notas</title>
 </head>
-<body class="bg-gray-200 relative min-h-screen">
+<body class="bg-gray-200 h-screen">
   <!-- Encabezado centrado -->
   <header class="text-center py-4">
     <h1 class="text-xl font-bold">Welcome a Registro de Notas</h1>
   </header>
   
   <!-- Menú de navegación posicionado en la esquina superior derecha -->
-  <nav class="absolute top-4 right-4 flex flex-col items-end space-y-1">
+  <nav class="left-4 flex flex-col  space-y-20 bg-sky-500 p-4 rounded shadow-md absolute top-4 h-screen">
     <h4 id="inicio" class="font-medium">Inicio</h4>
     <a href="./login.html" class="hover:underline">
       <h4 class="font-medium">Iniciar Sesión</h4>
@@ -24,7 +24,7 @@
   </nav>
   
   <!-- Contenedor para centrar el formulario en la pantalla -->
-  <div class="flex items-center justify-center min-h-screen">
+  <div class="flex items-center justify-center">
     <form id="registerForm" class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md">
       <div class="flex flex-col w-full">
         <label for="nameInput" class="mb-1">Nombre</label>
@@ -46,15 +46,16 @@
         <input type="password" id="passwordConfirm" class="border p-2 rounded">
       </div>
 
-      <button type="submit" id="registerButton" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      <button type="submit" id="registerButton" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 active:bg-blue-700 rounded-x2">
         Enviar
       </button>
     </form>
   </div>
 
   <footer class="text-center py-4">
-    Pie de página
+Registo de Notas, 2025
   </footer>
+  <script src="../../assets/js/register.js"></script>
 </body>
 </html>
 
