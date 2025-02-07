@@ -13,7 +13,6 @@ export const AuthLogin = async (admin: IAdministrador) => {
             return {
                 error: "Esta cuenta no está registrada",
                 statusCode: 400,
-                data: null
             };
         }
 
@@ -23,7 +22,6 @@ export const AuthLogin = async (admin: IAdministrador) => {
             return {
                 message: "Clave inválida",
                 statusCode: 403,
-                // data: null
             };
         }
 

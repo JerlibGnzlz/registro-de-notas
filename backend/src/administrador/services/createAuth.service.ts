@@ -1,5 +1,4 @@
 import { passwordHashado } from '../../helpers/bycript';
-// import { generarToken } from '../../helpers/JwToken';
 import { Administrador } from '../../models';
 
 export const AuthRegister = async (name: string, email: string, password: string) => {
