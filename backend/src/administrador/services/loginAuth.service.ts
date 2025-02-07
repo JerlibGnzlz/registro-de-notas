@@ -23,21 +23,17 @@ export const AuthLogin = async (admin: IAdministrador) => {
             return {
                 message: "Clave inválida",
                 statusCode: 403,
-                data: null
+                // data: null
             };
         }
 
         const token = await generarToken(existAdmin.email);
 
-        const data = {
-            administrador: existAdmin,
-            token
-        };
-
         return {
             message: "Sesión y token válidos",
             statusCode: 200,
-            data
+            data: [existAdmin],
+            token
         };
     } catch (error) {
         return {

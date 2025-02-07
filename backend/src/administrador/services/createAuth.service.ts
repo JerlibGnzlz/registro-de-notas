@@ -22,7 +22,7 @@ export const AuthRegister = async (name: string, email: string, password: string
             return {
                 message: 'El administrador ya existe',
                 statusCode: 400,
-                data: existAdmin
+                data: [existAdmin]
             };
         }
 
@@ -34,22 +34,6 @@ export const AuthRegister = async (name: string, email: string, password: string
             password: encrypted,
         });
 
-
-        // const compararPassword = await passwordCorrecto(password, encrypted)
-
-        // // let data
-
-        // let data;
-
-        // if (compararPassword) {
-        //     const token = await generarToken(newAdmin.email)
-
-        //     data = {
-        //         user: newAdmin,
-        //         token
-        //     }
-
-        // }
 
         return {
             message: 'Administrador creado exitosamente',
