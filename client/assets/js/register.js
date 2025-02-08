@@ -22,12 +22,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (passwordInput.value !== confirmPasswordInput.value) {
-            alert("Las contraseñas no coinciden");
+            Swal.fire({
+                icon: "error",
+                title: "Contraseñas no coinciden",
+                text: "Las contraseñas no coinciden",
+              });
             return;
         }
 
         if (passwordInput.length < 6) {
-            alert("La contraseña debe tener al menos 6 caracteres");
+            Swal.fire({
+                icon: "error",
+                title: "Contraseña demasiado corta",
+                text: "La contraseña debe tener al menos 6 caracteres.",
+              });
+            return;
+          }
+
+          if (!email.includes("@") || !email.includes(".")) {
+            Swal.fire({
+              icon: "error",
+              title: "Email inválido",
+              text: "El email debe contener una '@' y un punto.",
+            });
             return;
           }
 
