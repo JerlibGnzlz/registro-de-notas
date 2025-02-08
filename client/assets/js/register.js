@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (passwordInput.length < 6) {
+        if (passwordInput.value.length < 6) {
             Swal.fire({
                 icon: "error",
                 title: "Contraseña demasiado corta",
