@@ -1,18 +1,20 @@
 import { validaciones } from "./validaciones.js";
     const form = document.querySelector("#registerForm");
+    console.log("📝 Formulario encontrado:", form);
+
     const nameInput = document.querySelector("#nameInput");
     const emailInput = document.querySelector("#emailInput");
     const passwordInput = document.querySelector("#passwordInput");
     const confirmPasswordInput = document.querySelector("#passwordConfirm");
 
-   validaciones(form, nameInput, emailInput, passwordInput, confirmPasswordInput);
-
-   form.addEventListener("submit", async (event) => {
+    console.log("📌 Script cargado correctamente.");
+    form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    alert("Evento submit detectado");
 
 
-    const valid = await validaciones(nameInput, emailInput, passwordInput, confirmPasswordInput);
-    if (!valid) return; })
+    const valid = validaciones(nameInput, emailInput, passwordInput, confirmPasswordInput);
+    if (!valid) return; 
     
         const newUser = {
             name: nameInput.value,
@@ -21,13 +23,14 @@ import { validaciones } from "./validaciones.js";
         };
 
         try {
-            const response = await fetch("", {
+            const response = await fetch("http://localhost:3001/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(newUser),
             });
+            console.log(response);
     
             const result = await response.json();
     
@@ -37,7 +40,7 @@ import { validaciones } from "./validaciones.js";
                     title: "Registro exitoso",
                     text: "Redirigiendo...",
                 }).then(() => {
-                    window.location.href = "/login";
+                    window.location.href = "../../pages/login/login.html";
                 });
             }
            else {
@@ -54,3 +57,5 @@ import { validaciones } from "./validaciones.js";
                 text: "Hubo un problema con la conexión al servidor.",
             });
         }
+    });
+    console.log(document.querySelector("#registerForm"));

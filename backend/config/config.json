@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "jm1516",
+    "password": "280386rr",
     "database": "registro_de_notas",
     "host": "localhost",
     "dialect": "postgres"
