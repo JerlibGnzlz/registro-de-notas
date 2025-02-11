@@ -10,7 +10,7 @@ export const db = new Sequelize(
     process.env.DB_PASSWORD as string, {
     logging: false,
     host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT as any || "postgres",
+    dialect: "postgres",
     define: {
         freezeTableName: true,
     },
