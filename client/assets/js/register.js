@@ -28,27 +28,32 @@ form.addEventListener("submit", async (event) => {
                 "Content-Type": "application/json",
             },
         });
-        console.log(response);
 
-        const result = await response.json();
 
-        if (response.ok) {
-            Swal.fire({
-                icon: "success",
-                title: "Registro exitoso",
-                text: "Redirigiendo...",
-            }).then(() => {
-                window.location.href = "../../pages/login/login.html";
-            });
-        }
-        else {
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error(" Error en la respuesta del servidor:", errorData);
+
+
             Swal.fire({
                 icon: "error",
                 title: "Error",
-                text: result.message || "Ocurrió un error en el servidor.",
+                text: errorData.error.message,
             });
+
+            return;
         }
-    } catch (error) {
+        const result = await response.json();
+        console.log(result);
+
+        Swal.fire({
+            icon: "success",
+            text: result.message,
+        }).then(() => {
+            window.location.href = "../../pages/login/login.html";
+        });
+    }
+    catch (error) {
         console.error("Error en el registro:", error);
         Swal.fire({
             icon: "error",
