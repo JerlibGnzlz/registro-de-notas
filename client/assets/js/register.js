@@ -1,6 +1,5 @@
 import { validaciones } from "./validaciones.js";
 const form = document.querySelector("#registerForm");
-console.log("📝 Formulario encontrado:", form);
 
 const nameInput = document.querySelector("#nameInput");
 const emailInput = document.querySelector("#emailInput");
@@ -35,23 +34,36 @@ form.addEventListener("submit", async (event) => {
             console.error(" Error en la respuesta del servidor:", errorData);
 
 
+            if (response.status) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: errorData.message,
+                });
+                return;
+            }
+
+
             Swal.fire({
                 icon: "error",
                 title: "Error",
-                text: errorData.error.message,
+                text: errorData.message || "Ocurrió un error inesperado.",
             });
 
-            return;
+            return
         }
+
         const result = await response.json();
         console.log(result);
 
         Swal.fire({
             icon: "success",
             text: result.message,
-        }).then(() => {
+        })
+
+        setTimeout(() => {
             window.location.href = "../../pages/login/login.html";
-        });
+        }, 3000);
     }
     catch (error) {
         console.error("Error en el registro:", error);
@@ -61,4 +73,4 @@ form.addEventListener("submit", async (event) => {
             text: "Hubo un problema con la conexión al servidor.",
         });
     }
-});
+})

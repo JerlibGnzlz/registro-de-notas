@@ -1,7 +1,6 @@
 export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
 
 
-    // Validar que los campos no estén vacíos
     if (nameInput.value.trim() === "" ||
         emailInput.value.trim() === "" ||
         passwordInput.value.trim() === "" ||
@@ -14,7 +13,6 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         return;
     }
 
-    // Validar que las contraseñas coincidan
     if (passwordInput.value !== confirmPasswordInput.value) {
         Swal.fire({
             icon: "error",
@@ -24,7 +22,6 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         return;
     }
 
-    // Validar longitud de la contraseña
     if (passwordInput.value.length < 6) {
         Swal.fire({
             icon: "error",
@@ -34,7 +31,6 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         return;
     }
 
-    // Validar formato del correo
     if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
         Swal.fire({
             icon: "error",
@@ -44,12 +40,6 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         return;
     }
 
-    // Mensaje de éxito y envío del formulario
-    Swal.fire({
-        icon: "success",
-        title: "Registro exitoso",
-        text: "Redirigiendo...",
-    })
     return true
 }
 
