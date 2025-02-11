@@ -21,7 +21,7 @@ export const AuthRegister = async (name: string, email: string, password: string
             return {
                 message: 'El administrador ya existe',
                 statusCode: 400,
-                data: [existAdmin]
+                data: existAdmin
             };
         }
 
@@ -41,7 +41,7 @@ export const AuthRegister = async (name: string, email: string, password: string
         };
     } catch (error) {
         return {
-            message: error instanceof Error ? error.message : 'Error interno del servidor',
+            message: "Error al registrar el Administrador",
             statusCode: 500
         };
     }
