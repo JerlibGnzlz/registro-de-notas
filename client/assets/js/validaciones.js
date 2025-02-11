@@ -1,18 +1,16 @@
-export const validaciones = (form, nameInput, emailInput, passwordInput, confirmPasswordInput) => {
-    form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evita el envío del formulario por defecto
-    console.log("Evento submit detectado");
+export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
+
 
     // Validar que los campos no estén vacíos
-    if (nameInput.value.trim() === "" || 
-        emailInput.value.trim() === "" || 
-        passwordInput.value.trim() === "" || 
+    if (nameInput.value.trim() === "" ||
+        emailInput.value.trim() === "" ||
+        passwordInput.value.trim() === "" ||
         confirmPasswordInput.value.trim() === "") {
-            Swal.fire({
-                icon: "error",
-                title: "Campos obligatorios",
-                text: "Todos los campos son obligatorios.",
-            });
+        Swal.fire({
+            icon: "error",
+            title: "Campos obligatorios",
+            text: "Todos los campos son obligatorios.",
+        });
         return;
     }
 
@@ -51,7 +49,8 @@ export const validaciones = (form, nameInput, emailInput, passwordInput, confirm
         icon: "success",
         title: "Registro exitoso",
         text: "Redirigiendo...",
-    }).then(() => {
-        form.submit();
-    });
-})};
+    })
+    return true
+}
+
+
