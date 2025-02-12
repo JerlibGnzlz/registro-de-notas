@@ -34,15 +34,14 @@ form.addEventListener("submit", async (event) => {
             console.error(" Error en la respuesta del servidor:", errorData);
 
 
-            if (response.status) {
+            if (response.status === 400 && errorData.data) {
                 Swal.fire({
                     icon: "error",
-                    title: "Error",
-                    text: errorData.message,
+                    title: "Usuario ya registrado",
+                    text: `El usuario con email ${errorData.data.email} ya está registrado. Por favor, inicia sesión.`,
                 });
                 return;
             }
-
 
             Swal.fire({
                 icon: "error",
@@ -58,12 +57,13 @@ form.addEventListener("submit", async (event) => {
 
         Swal.fire({
             icon: "success",
-            text: result.message,
-        })
-
+            title: "Registro exitoso",
+            text: result.message || "Te registraste correctamente. Serás redirigido al login.",
+        });
         setTimeout(() => {
             window.location.href = "../../pages/login/login.html";
         }, 3000);
+
     }
     catch (error) {
         console.error("Error en el registro:", error);

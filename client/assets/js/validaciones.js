@@ -1,5 +1,9 @@
 export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
 
+    const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,30}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
 
     if (nameInput.value.trim() === "" ||
         emailInput.value.trim() === "" ||
@@ -12,6 +16,15 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         });
         return;
     }
+    if (!nameRegex.test(nameInput.value)) {
+        Swal.fire({
+            icon: "error",
+            title: "Nombre inválido",
+            text: "El nombre debe contener solo letras, espacios y tener entre 3 y 50 caracteres.",
+        });
+        return;
+    }
+
 
     if (passwordInput.value !== confirmPasswordInput.value) {
         Swal.fire({
@@ -22,20 +35,39 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
         return;
     }
 
-    if (passwordInput.value.length < 6) {
+    if (!emailRegex.test(emailInput.value)) {
         Swal.fire({
             icon: "error",
-            title: "Contraseña demasiado corta",
-            text: "La contraseña debe tener al menos 6 caracteres.",
+            title: "Email inválido",
+            text: "El email debe tener un formato válido (ejemplo: usuario@dominio.com).",
         });
         return;
     }
 
-    if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
+
+    if (passwordInput.value.length < 8) {
         Swal.fire({
             icon: "error",
-            title: "Email inválido",
-            text: "El email debe contener una '@' y un punto.",
+            title: "Contraseña demasiado corta",
+            text: "La contraseña debe tener al menos 8 caracteres.",
+        });
+        return;
+    }
+
+    if (!passwordRegex.test(passwordInput.value)) {
+        Swal.fire({
+            icon: "error",
+            title: "Contraseña insegura",
+            text: "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.",
+        });
+        return;
+    }
+
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        Swal.fire({
+            icon: "error",
+            title: "Contraseñas no coinciden",
+            text: "Las contraseñas ingresadas no coinciden.",
         });
         return;
     }
