@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Registro de Notas</title>
+</head>
+<body class="bg-teal-600 h-screen w-screen flex items-center justify-center">
+    <main class="bg-sky-200 h-auto w-300 flex flex-col items-center  rounded-md">
+        <div class="ingreso">
+        <header class="rounded-md bg-cyan-400 text-center w-full p-4  my-2">
+            <h1 class="text-xl font-bold">Calificación de Notas</h1>
+        </header>
+        <form action="" class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full">
+            <label for="nameInput" class="mb-1">Nombre</label>
+            <input type="text" class="border p-2 rounded w-3/4" placeholder="Nombre" class="bg-neutral-50">
+            <label for="nota1">Nota 1</label>
+            <input type="text" class="border p-2 rounded w-3/4" placeholder="Nota 1">
+            <label for="nota2">Nota 2</label>
+            <input type="text" class="border p-2 rounded w-3/4" placeholder="Nota 2">
+            <label for="nota3">Nota 3</label>
+            <input type="text" class="border p-2 rounded w-3/4" placeholder="Nota 3">
+        </form>        
+    </div>
+    <section>
+        <div>
+            <p>Al hacer click en el botón se promediarán las notas del alumno.</p>
+        </div>
+        <div class="flex items-center justify-center">
+            <button class="bg-blue-600 p-4 rounded-md hover:bg-blue-400 active:bg-blue-200">Promediar nota</button>
+        </div>
+    </section>
+    <section class="resultados">
+        <header class="rounded-md bg-cyan-400 text-center w-full p-4  my-2">
+        <h1 class="text-xl font-bold">Resultados</h1>
+    </header>
+    <table >
+        <thead >
+            <tr class="bg-gray-200 border-4 border-stone-100">
+                <td class="border-4 border-stone-100 mx-8 p-3">Nombre</td>
+                <td class="border-4 border-stone-100 mx-8 p-3">Nota 1</td>
+                <td class="border-4 border-stone-100 mx-8 p-3">Nota 2</td>
+                <td class="border-4 border-stone-100 mx-8 p-3">Nota 3</td>
+                <td class="border-4 border-stone-100 mx-8 p-3">Promedio</td>
+                <td class="border-4 border-stone-100 mx-8 p-3">Observación</td>
+            </tr>
+        </thead>
+        <tbody id="addtabla">
+            
+        </tbody>                  
+    </table>
+    </section>
+
+    </main>
+</body>
+</html>
