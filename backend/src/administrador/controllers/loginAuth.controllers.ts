@@ -9,7 +9,7 @@ export const login = async (req: Request, res: Response) => {
     try {
         const administrador = await AuthLogin(admin);
 
-        res.status(200).json([administrador])
+        res.status(200).json(administrador)
 
     } catch (error) {
         res.status(500).json({ error: "Error al logear el Administrador" });

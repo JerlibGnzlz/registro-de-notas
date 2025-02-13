@@ -30,12 +30,12 @@ export const AuthLogin = async (admin: IAdministrador) => {
         return {
             message: "Sesión y token válidos",
             statusCode: 200,
-            data: [existAdmin],
+            data: existAdmin,
             token
         };
     } catch (error) {
         return {
-            message: error instanceof Error ? error.message : 'Error interno del servidor',
+            message: 'Error interno del servidor',
             statusCode: 500
         };
     }
