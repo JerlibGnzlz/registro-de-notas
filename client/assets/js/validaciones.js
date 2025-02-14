@@ -76,39 +76,31 @@ export const validarRegister = (nameInput, emailInput, passwordInput, confirmPas
 }
 
 
-export const validarLogin = (emailInput, passwordInput) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// validaciones.js
+export function validarLogin(emailInput, passwordInput) {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    let isValid = true;
 
-    // Validar campos vacíos
-    if (emailInput.value.trim() === "" || passwordInput.value.trim() === "") {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         Swal.fire({
             icon: "error",
-            title: "Campos obligatorios",
-            text: "El email y la contraseña son obligatorios.",
+            title: "Error de validación",
+            text: "Por favor, ingresa un correo válido.",
         });
-        return false;
+        isValid = false;
     }
 
-    // Validar formato del email
-    if (!emailRegex.test(emailInput.value)) {
+    if (!passwordRegex.test(password)) {
         Swal.fire({
             icon: "error",
-            title: "Email inválido",
-            text: "El email debe tener un formato válido (ejemplo: usuario@dominio.com).",
+            title: "Error de validación",
+            text: "La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.",
         });
-        return false;
+        isValid = false;
     }
 
-    // Validar longitud de la contraseña
-    if (passwordInput.value.length < 8) {
-        Swal.fire({
-            icon: "error",
-            title: "Contraseña demasiado corta",
-            text: "La contraseña debe tener al menos 8 caracteres.",
-        });
-        return false;
-    }
-
-    // Si todo es válido
-    return true;
-};
+    return isValid;
+}

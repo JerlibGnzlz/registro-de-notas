@@ -2,22 +2,32 @@ import { validarLogin } from "./validaciones.js";
 
 const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
+const loginForm = document.querySelector("#loginForm");
 
-document.querySelector("#loginForm").addEventListener("submit", async (e) => {
+loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const valid = validarLogin(emailInput, passwordInput);
-    if (!valid) return;
+    if (!validarLogin(emailInput, passwordInput)) {
+        return;
+    }
 
-    // Datos del usuario
     const userLogin = {
-        email: emailInput.value,
-        password: passwordInput.value,
+        email: emailInput.value.trim(),
+        password: passwordInput.value.trim(),
     };
 
     console.log("Datos enviados al servidor:", userLogin);
 
     try {
+        Swal.fire({
+            title: "Iniciando sesión...",
+            text: "Por favor, espera un momento.",
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        });
+
         const response = await fetch("http://localhost:3001/api/auth/login", {
             method: "POST",
             body: JSON.stringify(userLogin),
@@ -25,6 +35,9 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
                 "Content-Type": "application/json",
             },
         });
+
+        // Cerrar el indicador de carga
+        Swal.close();
 
         if (!response.ok) {
             let errorData = {};
@@ -63,9 +76,11 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
         });
 
         setTimeout(() => {
-            window.location.href = "../../pages/dashboard/dashboard.html";
+            // window.location.href = "../../pages/dashboard/dashboard.html";
         }, 3000);
     } catch (error) {
+        Swal.close();
+
         console.error("Error en el inicio de sesión:", error);
         Swal.fire({
             icon: "error",
