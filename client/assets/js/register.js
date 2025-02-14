@@ -1,71 +1,46 @@
 import { validarRegister } from "./validaciones.js";
+
 const form = document.querySelector("#registerForm");
-
-const nameInput = document.querySelector("#nameInput");
-const emailInput = document.querySelector("#emailInput");
-const passwordInput = document.querySelector("#passwordInput");
-const confirmPasswordInput = document.querySelector("#passwordConfirm");
-
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const valid = validarRegister(nameInput, emailInput, passwordInput, confirmPasswordInput);
-    if (!valid) return;
+    const name = document.querySelector("#nameInput").value.trim();
+    const email = document.querySelector("#emailInput").value.trim();
+    const password = document.querySelector("#passwordInput").value.trim();
+    const confirmPassword = document.querySelector("#passwordConfirm").value.trim();
 
-    const newUser = {
-        name: nameInput.value,
-        email: emailInput.value,
-        password: passwordInput.value,
-    };
+    if (!validarRegister(name, email, password, confirmPassword)) return;
 
     try {
         const response = await fetch("http://localhost:3001/api/auth/register", {
             method: "POST",
-            body: JSON.stringify(newUser),
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, password }),
         });
 
+        const data = await response.json();
 
         if (!response.ok) {
-            const errorData = await response.json();
-            console.error(" Error en la respuesta del servidor:", errorData);
-
-
-            if (response.status === 400 && errorData.data) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Usuario ya registrado",
-                    text: `El usuario con email ${errorData.data.email} ya está registrado. Por favor, inicia sesión.`,
-                });
-                return;
-            }
-
+            const errorMsg = data.message || "Ocurrió un error inesperado.";
             Swal.fire({
                 icon: "error",
                 title: "Error",
-                text: errorData.message || "Ocurrió un error inesperado.",
+                text: errorMsg,
             });
-
-            return
+            return;
         }
-
-        const result = await response.json();
-        console.log(result);
 
         Swal.fire({
             icon: "success",
             title: "Registro exitoso",
-            text: result.message || "Te registraste correctamente. Serás redirigido al login.",
+            text: data.message || "Te registraste correctamente. Serás redirigido al login.",
+        }).then(() => {
+            setTimeout(() => {
+                window.location.href = "../../pages/login/login.html";
+            }, 3000);
         });
-        setTimeout(() => {
-            window.location.href = "../../pages/login/login.html";
-        }, 3000);
-
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error en el registro:", error);
         Swal.fire({
             icon: "error",
@@ -73,4 +48,4 @@ form.addEventListener("submit", async (event) => {
             text: "Hubo un problema con la conexión al servidor.",
         });
     }
-})
+});

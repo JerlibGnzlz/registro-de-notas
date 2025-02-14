@@ -1,107 +1,53 @@
-export const validarRegister = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
-
+export const validarRegister = (name, email, password, confirmPassword) => {
     const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,30}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
-
-    if (nameInput.value.trim() === "" ||
-        emailInput.value.trim() === "" ||
-        passwordInput.value.trim() === "" ||
-        confirmPasswordInput.value.trim() === "") {
+    if (!name || !email || !password || !confirmPassword) {
         Swal.fire({
             icon: "error",
             title: "Campos obligatorios",
             text: "Todos los campos son obligatorios.",
         });
-        return;
+        return false;
     }
-    if (!nameRegex.test(nameInput.value)) {
+
+    if (!nameRegex.test(name)) {
         Swal.fire({
             icon: "error",
             title: "Nombre inválido",
-            text: "El nombre debe contener solo letras, espacios y tener entre 3 y 50 caracteres.",
+            text: "El nombre debe contener solo letras, espacios y tener entre 3 y 30 caracteres.",
         });
-        return;
+        return false;
     }
 
-
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        Swal.fire({
-            icon: "error",
-            title: "Contraseñas no coinciden",
-            text: "Las contraseñas no coinciden.",
-        });
-        return;
-    }
-
-    if (!emailRegex.test(emailInput.value)) {
+    if (!emailRegex.test(email)) {
         Swal.fire({
             icon: "error",
             title: "Email inválido",
             text: "El email debe tener un formato válido (ejemplo: usuario@dominio.com).",
         });
-        return;
-    }
-
-
-    if (passwordInput.value.length < 8) {
-        Swal.fire({
-            icon: "error",
-            title: "Contraseña demasiado corta",
-            text: "La contraseña debe tener al menos 8 caracteres.",
-        });
-        return;
-    }
-
-    if (!passwordRegex.test(passwordInput.value)) {
-        Swal.fire({
-            icon: "error",
-            title: "Contraseña insegura",
-            text: "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.",
-        });
-        return;
-    }
-
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        Swal.fire({
-            icon: "error",
-            title: "Contraseñas no coinciden",
-            text: "Las contraseñas ingresadas no coinciden.",
-        });
-        return;
-    }
-
-    return true
-}
-
-
-// validaciones.js
-export function validarLogin(emailInput, passwordInput) {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-    let isValid = true;
-
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        Swal.fire({
-            icon: "error",
-            title: "Error de validación",
-            text: "Por favor, ingresa un correo válido.",
-        });
-        isValid = false;
+        return false;
     }
 
     if (!passwordRegex.test(password)) {
         Swal.fire({
             icon: "error",
-            title: "Error de validación",
-            text: "La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.",
+            title: "Contraseña insegura",
+            text: "La contraseña debe tener al menos 8 caracteres incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.",
         });
-        isValid = false;
+        return false;
     }
 
-    return isValid;
-}
+    if (password !== confirmPassword) {
+        Swal.fire({
+            icon: "error",
+            title: "Contraseñas no coinciden",
+            text: "Las contraseñas ingresadas no coinciden.",
+        });
+        return false;
+    }
+
+    return true;
+};
+
