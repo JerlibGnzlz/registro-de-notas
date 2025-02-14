@@ -42,7 +42,7 @@ form.addEventListener("submit", async (event) => {
         }).then(() => {
             setTimeout(() => {
                 window.location.href = "../../pages/dashboards/registroAlumnos.html";
-            }, 3000);
+            }, 2000);
         });
     } catch (error) {
         console.error("Error en el inicio de sesión:", error);
