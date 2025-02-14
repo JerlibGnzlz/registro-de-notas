@@ -4,10 +4,30 @@ const emailInput = document.querySelector("#emailInput");
 const passwordInput = document.querySelector("#passwordInput");
 const loginForm = document.querySelector("#loginForm");
 
+// Función para mostrar alertas de error
+const mostrarError = (titulo, mensaje) => {
+    Swal.fire({
+        icon: "error",
+        title: titulo,
+        text: mensaje,
+    });
+};
+
+// Función para mostrar alertas de éxito
+const mostrarExito = (titulo, mensaje) => {
+    Swal.fire({
+        icon: "success",
+        title: titulo,
+        text: mensaje,
+    });
+};
+
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Validación en cliente
     if (!validarLogin(emailInput, passwordInput)) {
+        mostrarError("Validación fallida", "Por favor, verifica los campos ingresados.");
         return;
     }
 
@@ -15,8 +35,6 @@ loginForm.addEventListener("submit", async (e) => {
         email: emailInput.value.trim(),
         password: passwordInput.value.trim(),
     };
-
-    console.log("Datos enviados al servidor:", userLogin);
 
     try {
         Swal.fire({
@@ -36,56 +54,36 @@ loginForm.addEventListener("submit", async (e) => {
             },
         });
 
-        // Cerrar el indicador de carga
         Swal.close();
 
         if (!response.ok) {
-            let errorData = {};
-            try {
-                errorData = await response.json();
-            } catch {
-                errorData = { message: "Error desconocido del servidor" };
-            }
-
+            const errorData = await response.json().catch(() => ({ message: "Error desconocido del servidor" }));
             console.error("Error en la respuesta del servidor:", errorData);
 
-            if (response.status === 403) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Credenciales inválidas",
-                    text: errorData.message || "El email o la contraseña son incorrectos.",
-                });
+
+            if (response.status === 400) {
+                mostrarError("Cuenta no registrada", errorData.message || "No existe una cuenta asociada a este correo.");
                 return;
             }
 
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: errorData.message || "Ocurrió un error inesperado.",
-            });
+            mostrarError("Error inesperado", errorData.message || "Ocurrió un error desconocido.");
             return;
         }
 
         const result = await response.json();
         console.log("Resultado del servidor:", result);
 
-        Swal.fire({
-            icon: "success",
-            title: "Inicio de sesión exitoso",
-            text: result.message || "Redirigiendo al dashboard...",
-        });
-
+        mostrarExito("Inicio de sesión exitoso", result.message || "Redirigiendo al dashboard...");
         setTimeout(() => {
-            // window.location.href = "../../pages/dashboard/dashboard.html";
+            window.location.href = "../../pages/dashboard/dashboard.html";
         }, 3000);
     } catch (error) {
         Swal.close();
 
         console.error("Error en el inicio de sesión:", error);
-        Swal.fire({
-            icon: "error",
-            title: "Error de conexión",
-            text: "No se pudo conectar con el servidor. Verifica tu red o contacta al administrador.",
-        });
+        mostrarError(
+            "Error de conexión",
+            "No se pudo conectar con el servidor. Verifica tu red o contacta al administrador."
+        );
     }
 });
