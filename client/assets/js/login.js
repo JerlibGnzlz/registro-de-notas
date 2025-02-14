@@ -9,10 +9,13 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
     const valid = validarLogin(emailInput, passwordInput);
     if (!valid) return;
 
+    // Datos del usuario
     const userLogin = {
         email: emailInput.value,
         password: passwordInput.value,
     };
+
+    console.log("Datos enviados al servidor:", userLogin);
 
     try {
         const response = await fetch("http://localhost:3001/api/auth/login", {
@@ -24,10 +27,16 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
+            let errorData = {};
+            try {
+                errorData = await response.json();
+            } catch {
+                errorData = { message: "Error desconocido del servidor" };
+            }
+
             console.error("Error en la respuesta del servidor:", errorData);
 
-            if (response.status === 401) {
+            if (response.status === 403) {
                 Swal.fire({
                     icon: "error",
                     title: "Credenciales inválidas",
@@ -45,13 +54,14 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
         }
 
         const result = await response.json();
-        console.log(result);
+        console.log("Resultado del servidor:", result);
 
         Swal.fire({
             icon: "success",
             title: "Inicio de sesión exitoso",
             text: result.message || "Redirigiendo al dashboard...",
         });
+
         setTimeout(() => {
             window.location.href = "../../pages/dashboard/dashboard.html";
         }, 3000);
@@ -59,8 +69,8 @@ document.querySelector("#loginForm").addEventListener("submit", async (e) => {
         console.error("Error en el inicio de sesión:", error);
         Swal.fire({
             icon: "error",
-            title: "Error",
-            text: "No se pudo conectar con el servidor.",
+            title: "Error de conexión",
+            text: "No se pudo conectar con el servidor. Verifica tu red o contacta al administrador.",
         });
     }
 });
