@@ -11,7 +11,7 @@ export const AuthLogin = async (admin: IAdministrador) => {
 
         if (!existAdmin) {
             return {
-                error: "Esta cuenta no está registrada",
+                message: "Esta cuenta no está registrada",
                 statusCode: 400,
             };
         }

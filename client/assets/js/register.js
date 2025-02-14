@@ -1,4 +1,4 @@
-import { validaciones } from "./validaciones.js";
+import { validarRegister } from "./validaciones.js";
 const form = document.querySelector("#registerForm");
 
 const nameInput = document.querySelector("#nameInput");
@@ -10,7 +10,7 @@ const confirmPasswordInput = document.querySelector("#passwordConfirm");
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const valid = validaciones(nameInput, emailInput, passwordInput, confirmPasswordInput);
+    const valid = validarRegister(nameInput, emailInput, passwordInput, confirmPasswordInput);
     if (!valid) return;
 
     const newUser = {

@@ -1,4 +1,4 @@
-export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
+export const validarRegister = (nameInput, emailInput, passwordInput, confirmPasswordInput) => {
 
     const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,30}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,3 +76,39 @@ export const validaciones = (nameInput, emailInput, passwordInput, confirmPasswo
 }
 
 
+export const validarLogin = (emailInput, passwordInput) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validar campos vacíos
+    if (emailInput.value.trim() === "" || passwordInput.value.trim() === "") {
+        Swal.fire({
+            icon: "error",
+            title: "Campos obligatorios",
+            text: "El email y la contraseña son obligatorios.",
+        });
+        return false;
+    }
+
+    // Validar formato del email
+    if (!emailRegex.test(emailInput.value)) {
+        Swal.fire({
+            icon: "error",
+            title: "Email inválido",
+            text: "El email debe tener un formato válido (ejemplo: usuario@dominio.com).",
+        });
+        return false;
+    }
+
+    // Validar longitud de la contraseña
+    if (passwordInput.value.length < 8) {
+        Swal.fire({
+            icon: "error",
+            title: "Contraseña demasiado corta",
+            text: "La contraseña debe tener al menos 8 caracteres.",
+        });
+        return false;
+    }
+
+    // Si todo es válido
+    return true;
+};
