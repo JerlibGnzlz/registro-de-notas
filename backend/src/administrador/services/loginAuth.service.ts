@@ -11,8 +11,8 @@ export const AuthLogin = async (admin: IAdministrador) => {
 
         if (!existAdmin) {
             return {
-                message: "Esta cuenta no está registrada",
                 statusCode: 400,
+                message: "Esta cuenta no está registrada",
             };
         }
 
@@ -20,23 +20,24 @@ export const AuthLogin = async (admin: IAdministrador) => {
 
         if (!compararPassword) {
             return {
-                message: "Clave inválida",
                 statusCode: 403,
+                message: "Clave inválida",
             };
         }
 
         const token = await generarToken(existAdmin.email);
 
         return {
-            message: "Sesión y token válidos",
             statusCode: 200,
+            message: "Sesión iniciada correctamente",
             data: existAdmin,
-            token
+            token,
         };
     } catch (error) {
+        console.error("Error interno en AuthLogin:", error);
         return {
-            message: 'Error interno del servidor',
-            statusCode: 500
+            statusCode: 500,
+            message: "Error interno del servidor",
         };
     }
 };
