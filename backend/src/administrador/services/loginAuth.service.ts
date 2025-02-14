@@ -20,7 +20,7 @@ export const AuthLogin = async (admin: IAdministrador) => {
 
         if (!compararPassword) {
             return {
-                statusCode: 403,
+                statusCode: 401,
                 message: "Clave inválida",
             };
         }

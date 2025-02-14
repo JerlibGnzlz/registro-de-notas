@@ -1,10 +1,11 @@
 import { passwordHashado } from '../../helpers/bycript';
+import { IAdministrador } from '../../interfaces/IAdministrador';
 import { Administrador } from '../../models';
 
-export const AuthRegister = async (name: string, email: string, password: string) => {
+export const AuthRegister = async (admin: IAdministrador) => {
 
 
-    if (!name || !email || !password) {
+    if (!admin.name || !admin.email || !admin.password) {
         return {
             message: 'Todos los campos (name, email, password) son requeridos',
             statusCode: 400
@@ -13,23 +14,23 @@ export const AuthRegister = async (name: string, email: string, password: string
 
     try {
         const existAdmin = await Administrador.findOne({
-            where: { email },
+            where: { email: admin.email },
             paranoid: false
         });
 
         if (existAdmin) {
             return {
                 message: 'El administrador ya existe',
-                statusCode: 400,
+                statusCode: 409,
                 data: existAdmin
             };
         }
 
-        const encrypted = await passwordHashado(password);
+        const encrypted = await passwordHashado(admin.password);
 
         const newAdmin = await Administrador.create({
-            name,
-            email,
+            name: admin.name,
+            email: admin.email,
             password: encrypted,
         });
 
