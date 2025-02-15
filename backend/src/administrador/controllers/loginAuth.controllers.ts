@@ -9,6 +9,13 @@ export const login = async (req: Request, res: Response) => {
     try {
         const { statusCode, message, data, token } = await AuthLogin(admin);
 
+        res.cookie("authCookie", token, {
+            httpOnly: true,
+            secure: process.env.COOKIE === "production",
+            // maxAge: 24 * 60 * 60 * 1000,
+            maxAge: 60 * 1000,
+            signed: true,
+        });
 
         res.status(statusCode).json({
             message,
