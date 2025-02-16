@@ -15,7 +15,7 @@
         <form action="" class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full">
             <label for="nameInput" class="mb-1">Nombre</label> 
             <!-- Renderizar dinámicamente acá el nombre del alumno -->
-            <select name="materia" id="materia" class="w-full p-2 rounded-md border-1 border-black-100">
+            <select name="materia" id="materiaSelect" class="w-full p-2 rounded-md border-1 border-black-100">
                 <option value="" disabled selected >Selecciona la Materia</option>
                 <option value="Algoritmos">Algoritmos</option>
                 <option value="DB">Bases de Datos</option>
@@ -39,11 +39,12 @@
         </form>        
     </div>
     <section>
-
+<ul id="materias" class="flex flex-row justify-center px-4 mt-2"></ul>
         <div class="flex items-center justify-center">
             <button class="bg-blue-600 text-white p-4 rounded-md hover:bg-blue-400 active:bg-blue-200 active:text-black my-4">Registrar nueva calificación</button>
         </div>
     </section>
     </main>
+    <script src="../../assets/js/notas.js"></script>
 </body>
 </html>
