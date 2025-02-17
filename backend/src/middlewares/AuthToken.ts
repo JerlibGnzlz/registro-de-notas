@@ -5,16 +5,19 @@ import { Administrador } from "../models";
 
 const { TOKEN } = process.env;
 
-export const authToken = async (req: Request, res: Response, next: NextFunction) => {
-    const authHeader = req.headers.authorization;
-
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return res.status(401).json({ message: "Acceso denegado, token no proporcionado" });
-    }
-
-    const token = authHeader.split(" ")[1];
+export const authToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
     try {
+        const authHeader = req.headers.authorization;
+
+        if (!authHeader || !authHeader.startsWith("Bearer")) {
+            res.status(401)
+                .json({ message: "Acceso denegado, token no proporcionado" });
+            return
+        }
+
+        const token = authHeader.split(" ")[1];
+
         const payload = Jwt.verify(token, TOKEN as string) as IPayload;
 
         const usuario = await Administrador.findOne({
@@ -22,12 +25,20 @@ export const authToken = async (req: Request, res: Response, next: NextFunction)
         });
 
         if (!usuario) {
-            return res.status(403).json({ message: "Usuario no autorizado" });
+            res.status(403)
+                .json({ message: "Usuario no autorizado" });
+            return
         }
 
-        req.user = usuario;
+        req.user = usuario
+
+        console.log(req.user);
+
+
         return next();
     } catch (error) {
-        return res.status(401).json({ message: "Sesión o token inválido" });
+        res.status(401)
+            .json({ message: "Sesión o token inválido" });
+        return
     }
 };
