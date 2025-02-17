@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>Registro de Notas</title>
 </head>
+
 <body class="bg-teal-600 h-screen w-screen flex items-center justify-center">
     <main class="bg-sky-200 h-auto w-300 flex flex-col items-center  rounded-md">
         <div class="ingreso">
-        <header class="rounded-md bg-cyan-400 text-center w-full p-4  my-2">
-            <h1 class="text-xl font-bold">Registro de Alumnos</h1>
-        </header>
-        <form action="" class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full">
-            <label for="nameInput" class="mb-1">Nombre</label>
-            <input type="text" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa el nombre" class="bg-neutral-50">
-            <label for="correo">Correo electrónico</label>
-            <input type="text" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa un correo electrónico válido">
-            <label for="imagen">Foto del estudiante</label>
-            <input type="file" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa la foto del estudiante">
-            <label for="nota2">Número de identificación (RUN/DNI)</label>
-            <input type="text" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa el número de identificación">
-            <label for="nota3">Ingresa la fecha de nacimiento</label>
-            <input type="date" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa la fecha de nacimiento">
-        </form>        
-    </div>
-    <section>
-
-        <div class="flex items-center justify-center">
-            <button class="bg-blue-600 text-white p-4 rounded-md hover:bg-blue-400 active:bg-blue-200 active:text-black my-4">Registrar nuevo alumno</button>
+            <header class="rounded-md bg-cyan-400 text-center w-full p-4  my-2">
+                <h1 class="text-xl font-bold">Registro de Alumnos</h1>
+                <button id="logoutButton"
+                    class="bg-red-600 text-white p-2 rounded-md hover:bg-red-500 active:bg-red-400">
+                    Cerrar sesión
+                </button>
+            </header>
+            <form action=""
+                class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full">
+                <label for="nameInput" class="mb-1">Nombre</label>
+                <input type="text" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa el nombre"
+                    class="bg-neutral-50">
+                <label for="correo">Correo electrónico</label>
+                <input type="text" class="border p-2 rounded w-3/4 px-4"
+                    placeholder="Ingresa un correo electrónico válido">
+                <label for="imagen">Foto del estudiante</label>
+                <input type="file" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa la foto del estudiante">
+                <label for="nota2">Número de identificación (RUN/DNI)</label>
+                <input type="text" class="border p-2 rounded w-3/4 px-4"
+                    placeholder="Ingresa el número de identificación">
+                <label for="nota3">Ingresa la fecha de nacimiento</label>
+                <input type="date" class="border p-2 rounded w-3/4 px-4" placeholder="Ingresa la fecha de nacimiento">
+            </form>
         </div>
-    </section>
-    <!-- <section class="resultados">
+        <section>
+
+            <div class="flex items-center justify-center">
+                <button
+                    class="bg-blue-600 text-white p-4 rounded-md hover:bg-blue-400 active:bg-blue-200 active:text-black my-4">Registrar
+                    nuevo alumno</button>
+            </div>
+        </section>
+        <!-- <section class="resultados">
         <header class="rounded-md bg-cyan-400 text-center w-full p-4  my-2">
         <h1 class="text-xl font-bold">Resultados</h1>
     </header>
@@ -48,7 +60,9 @@
         </thead>             
     </table>
     </section> -->
+        <script src="../../assets/js/registroAlumnos.js" type="module"></script>
 
     </main>
 </body>
+
 </html>

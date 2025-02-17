@@ -13,6 +13,8 @@ export const authToken = async (req: Request, res: Response, next: NextFunction)
 
             const payload = Jwt.verify(token, TOKEN as string) as IPayload
 
+            // req.user = payload
+
             await Administrador.findOne({
                 where: { email: payload.id },
             })

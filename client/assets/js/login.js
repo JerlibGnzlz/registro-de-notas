@@ -25,6 +25,7 @@ form.addEventListener("submit", async (event) => {
 
         const data = await response.json();
 
+
         if (!response.ok) {
             const errorMsg = data.message || "Credenciales incorrectas.";
             Swal.fire({
@@ -34,6 +35,8 @@ form.addEventListener("submit", async (event) => {
             });
             return;
         }
+
+        sessionStorage.setItem("token", data.token);
 
         Swal.fire({
             icon: "success",
