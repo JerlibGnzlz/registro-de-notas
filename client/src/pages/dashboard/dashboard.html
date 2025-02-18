@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>NotasApp</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-100">
+    <header class="bg-blue-600 shadow-md">
+      <nav
+        class="container mx-auto flex justify-evenly items-center p-1 text-2xl"
+      >
+        <div class="relative inline-block">
+          <img src="../../assets/img/logo_tareas.png" class="h-28" alt="" />
+          <p
+            class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
+            style="
+              text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+                1px 1px 0 black;
+            "
+          >
+            NotasApp
+          </p>
+        </div>
+
+        <!-- Menú Desktop -->
+        <ul class="hidden md:flex space-x-6 text-white">
+          <li><a href="/" class="hover:text-gray-300 transition">Inicio</a></li>
+          <li>
+            <a
+              href="./src/pages/auth/login/login.html"
+              class="hover:text-gray-300 transition"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              href="./src/pages/auth/register/register.html"
+              class="hover:text-gray-300 transition"
+              >Registro</a
+            >
+          </li>
+          <li>
+            <a
+              href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
+              class="hover:text-gray-300 transition"
+              >Alumnos</a
+            >
+          </li>
+          <li>
+            <a
+              href="./src/pages/dashboard/registro-notas/registroNotas.html"
+              class="hover:text-gray-300 transition"
+              >Notas</a
+            >
+          </li>
+        </ul>
+
+        <!-- Botón para menú móvil -->
+        <button id="menu-toggle" class="md:hidden text-white text-2xl">
+          ☰
+        </button>
+      </nav>
+
+      <!-- Menú Móvil -->
+      <ul
+        id="mobile-menu"
+        class="hidden flex-col bg-blue-600 text-white space-y-2 px-4 md:hidden"
+      >
+        <li><a href="/" class="block py-2 hover:bg-blue-500">Inicio</a></li>
+        <li>
+          <a
+            href="./src/pages/auth/login/login.html"
+            class="block py-2 hover:bg-blue-500"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/auth/register/register.html"
+            class="block py-2 hover:bg-blue-500"
+            >Registro</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
+            class="block py-2 hover:bg-blue-500"
+            >Alumnos</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/dashboard/registro-notas/registroNotas.html"
+            class="block py-2 hover:bg-blue-500"
+            >Notas</a
+          >
+        </li>
+      </ul>
+    </header>
+
+    <footer class="text-center py-4 bg-gray-800 text-white mt-auto text-2xl">
+      <p>&copy; 2025 - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+      // Toggle menú móvil
+      document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

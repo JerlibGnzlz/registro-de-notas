@@ -9,22 +9,99 @@
   <title>Inicio de Sesión</title>
 </head>
 
-<body class="bg-gray-200 h-screen m-0 p-0">
-  <!-- Encabezado centrado -->
-  <header class="text-center py-4">
-    <h1 class="text-xl font-bold">Inicia Sesión</h1>
-  </header>
+<body class="min-h-screen flex flex-col bg-gray-100">
+  <header class="bg-blue-600 shadow-md mb-4">
+    <nav
+      class="container mx-auto flex justify-evenly items-center p-1 text-2xl"
+    >
+      <div class="relative inline-block">
+        <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
+        <p
+          class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
+          style="
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+              1px 1px 0 black;
+          "
+        >
+          NotasApp
+        </p>
+      </div>
 
-  <!-- Menú de navegación posicionado en la esquina superior derecha -->
-  <nav class="left-4 flex flex-col  space-y-20 bg-sky-500 p-4 rounded shadow-md absolute top-4 h-screen">
-    <h4 id="inicio" class="font-medium">Inicio</h4>
-    <a href="../login/login.html" class="hover:underline">
-      <h4 class="font-medium">Iniciar Sesión</h4>
-    </a>
-    <a href="../register/register.html" class="hover:underline">
-      <h4 class="font-medium">Registrarse</h4>
-    </a>
-  </nav>
+      <!-- Menú Desktop -->
+      <ul class="hidden md:flex space-x-6 text-white">
+        <li><a href="/" class="hover:text-gray-300 transition">Inicio</a></li>
+        <li>
+          <a
+            href="./src/pages/auth/login/login.html"
+            class="hover:text-gray-300 transition"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/auth/register/register.html"
+            class="hover:text-gray-300 transition"
+            >Registro</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
+            class="hover:text-gray-300 transition"
+            >Alumnos</a
+          >
+        </li>
+        <li>
+          <a
+            href="./src/pages/dashboard/registro-notas/registroNotas.html"
+            class="hover:text-gray-300 transition"
+            >Notas</a
+          >
+        </li>
+      </ul>
+
+      <!-- Botón para menú móvil -->
+      <button id="menu-toggle" class="md:hidden text-white text-2xl">
+        ☰
+      </button>
+    </nav>
+
+    <!-- Menú Móvil -->
+    <ul
+      id="mobile-menu"
+      class="hidden flex-col bg-blue-600 text-white space-y-2 px-4 md:hidden"
+    >
+      <li><a href="/" class="block py-2 hover:bg-blue-500">Inicio</a></li>
+      <li>
+        <a
+          href="./src/pages/auth/login/login.html"
+          class="block py-2 hover:bg-blue-500"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a
+          href="./src/pages/auth/register/register.html"
+          class="block py-2 hover:bg-blue-500"
+          >Registro</a
+        >
+      </li>
+      <li>
+        <a
+          href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
+          class="block py-2 hover:bg-blue-500"
+          >Alumnos</a
+        >
+      </li>
+      <li>
+        <a
+          href="./src/pages/dashboard/registro-notas/registroNotas.html"
+          class="block py-2 hover:bg-blue-500"
+          >Notas</a
+        >
+      </li>
+    </ul>
+  </header>
 
   <!-- Contenedor para centrar el formulario en la pantalla -->
   <div class="flex items-center justify-center">
@@ -47,9 +124,16 @@
     </form>
   </div>
 
-  <footer class="text-center py-4">
+  <footer class="text-center py-4 bg-gray-800 text-white mt-auto text-2xl">
     <p>&copy; 2025 - Todos los derechos reservados.</p>
-  </footer>
+</footer>
+
+<script>
+    // Toggle menú móvil
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+</script>
   <script src="../login/login.js" type="module"></script>
 </body>
 
