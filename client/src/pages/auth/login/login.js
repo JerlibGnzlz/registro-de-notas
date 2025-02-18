@@ -44,7 +44,7 @@ form.addEventListener("submit", async (event) => {
             text: data.message || "Redirigiendo al dashboard...",
         }).then(() => {
             setTimeout(() => {
-                window.location.href = "../../pages/dashboards/registroAlumnos.html";
+                window.location.href = "../../../pages/dashboard/registro-alumnos/registroAlumnos.html";
             }, 2000);
         });
     } catch (error) {
@@ -56,3 +56,4 @@ form.addEventListener("submit", async (event) => {
         });
     }
 });
+

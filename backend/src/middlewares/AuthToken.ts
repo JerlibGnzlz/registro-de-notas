@@ -32,9 +32,6 @@ export const authToken = async (req: Request, res: Response, next: NextFunction)
 
         req.user = usuario
 
-        console.log(req.user);
-
-
         return next();
     } catch (error) {
         res.status(401)

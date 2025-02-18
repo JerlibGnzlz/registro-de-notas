@@ -1,4 +1,4 @@
-import { validarRegister } from "./validaciones.js";
+import { validarRegister } from "../../../validation/validaciones.js";
 
 const form = document.querySelector("#registerForm");
 
@@ -37,7 +37,7 @@ form.addEventListener("submit", async (event) => {
             text: data.message || "Te registraste correctamente. Serás redirigido al login.",
         }).then(() => {
             setTimeout(() => {
-                window.location.href = "../../pages/login/login.html";
+                window.location.href = "../../../pages/auth/login/login.html";
             }, 3000);
         });
     } catch (error) {
