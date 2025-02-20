@@ -3,7 +3,7 @@
     const registrarAlumno = document.querySelector('#registrarAlumno');
 
     const ingresarCalificaciones = () => {
-        calificaciones.classList.remove('hidden'); // Mostrar el formulario
+        calificaciones.classList.remove('hidden'); 
     };
 
     registrarAlumno.addEventListener("click", ingresarCalificaciones);
