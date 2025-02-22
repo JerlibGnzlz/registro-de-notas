@@ -10,6 +10,15 @@ alumnoRoutes.post("/register", register);
 
 alumnoRoutes.get("/all", controllerAlumnos);
 
+alumnoRoutes.get("/:id", controllerAlumnos);
+
+alumnoRoutes.delete("/:id", controllerAlumnos);
+
+alumnoRoutes.put("/:id", controllerAlumnos);
+alumnoRoutes.put("/:id", controllerAlumnos);
+alumnoRoutes.put("/:id", controllerAlumnos);
+
+
 
 
 
