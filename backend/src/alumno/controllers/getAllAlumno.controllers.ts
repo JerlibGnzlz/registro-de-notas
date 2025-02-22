@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ServicesAlumnos } from "../services/getAllAlumno.service";
 
-export const controllerAlumnos = async (_req: Request, res: Response): Promise<any> => {
+export const allAlumnos = async (_req: Request, res: Response): Promise<any> => {
     try {
         const { statusCode, message, data } = await ServicesAlumnos();
 
