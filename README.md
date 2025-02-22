@@ -1,1 +1,27 @@
-# registro-de-notas
+# 📝 NotasApp
+
+**NotasApp** es una aplicación web diseñada para la gestión eficiente de notas académicas de alumnos. Permite a los usuarios registrarse, iniciar sesión y administrar calificaciones de manera segura y organizada.
+
+## 🚀 Características
+
+- **Registro y Login**: Los usuarios pueden registrarse e iniciar sesión de manera segura.
+- **Gestión de Alumnos**: Creación, edición y eliminación de alumnos.
+- **Administración de Notas**: Asignación, actualización y visualización de calificaciones.
+
+
+
+- **Frontend**: HTML, CSS, Tailwids, JavaScript
+- **Backend**: Node.js, Express
+- **Base de Datos**: Postgres / Secuelize
+- **Autenticación**: JWT / Session
+
+| **Tecnología**    | **Descripción**             |
+|-------------------|---------------------------|
+| **Frontend**      | HTML, CSS, JavaScript      |
+| **Backend**       | Node.js, Express           |
+| **Base de Datos** | Postgres / Secuelize     |
+| **Autenticación** | JWT / Session          |
+
+   cd NotasApp
+npm install
+
