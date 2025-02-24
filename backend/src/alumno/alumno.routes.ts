@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { register } from "./controllers/alumno.controllers";
-import { controllerAlumnos } from "./controllers/getAllAlumno.controllers";
+import { allAlumnos } from "./controllers/getAllAlumno.controllers";
 
 
 export const alumnoRoutes = Router()
@@ -8,7 +8,15 @@ export const alumnoRoutes = Router()
 
 alumnoRoutes.post("/register", register);
 
-alumnoRoutes.get("/all", controllerAlumnos);
+alumnoRoutes.get("/all", allAlumnos);
+
+// alumnoRoutes.get("/:id", getAlumno);
+
+// alumnoRoutes.delete("/:id", deleteAlumno);
+
+// alumnoRoutes.put("/:id", putAlumno);
+
+
 
 
 
