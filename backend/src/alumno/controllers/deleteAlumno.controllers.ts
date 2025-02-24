@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
-import { ServicesAlumnos } from "../services/getAllAlumno.service";
+import { ServicesDeleteAlumno } from "../services/deleteAlumno.service";
 
-export const allAlumnos = async (_req: Request, res: Response): Promise<any> => {
+
+export const deleteAlumno = async (req: Request, res: Response): Promise<any> => {
     try {
-        const { statusCode, message, data } = await ServicesAlumnos();
+        const { id } = req.params;
+
+        const { statusCode, message, data } = await ServicesDeleteAlumno(id);
 
         return res.status(statusCode).json({
             message,
