@@ -1,17 +1,20 @@
 import { Router } from "express";
 import { authRoutes } from "../administrador/auth.routes";
-import { alumnoRoutes } from "../alumno/alumno.routes";
 import { notaRoutes } from "../notas/notas.routes";
 import { authToken } from "../middlewares/AuthToken";
+import { alumnoRoutes } from '../alumno/alumno.routes';
 
 
-export const indexRoutes = Router()
+export const router = Router()
 
 
-indexRoutes.use("/auth", authRoutes)
+router.use("/auth", authRoutes)
 
-indexRoutes.use("/alumno", authToken, alumnoRoutes)
+router.use("/alumno", authToken, alumnoRoutes)
 
-indexRoutes.use("/nota", notaRoutes)
+router.use("/nota", notaRoutes)
+
+
+
 
 

@@ -6,7 +6,7 @@ import { db } from './database';
 import './models/Notas';
 import './models/Alumno';
 import './models/Administrador';
-import { indexRoutes } from './routes/index.routes';
+import { router } from './routes/index.routes';
 
 const app: Application = express();
 
@@ -20,7 +20,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api', indexRoutes);
+app.use('/api', router);
+
 
 const isDev = process.env.NODE_ENV === "development"
 // const isDev = process.env.NODE_ENV === "production"
