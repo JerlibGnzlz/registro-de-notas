@@ -2,7 +2,6 @@ import { Alumno } from "../../models";
 
 export const ServicesDeleteAlumno = async (id: string) => {
     try {
-        // Buscar el alumno por su ID
         const alumno = await Alumno.destroy({
             where: { id },
         });
@@ -15,11 +14,9 @@ export const ServicesDeleteAlumno = async (id: string) => {
             };
         }
 
-        // Si no se encuentra el alumno
         return {
             statusCode: 404,
             message: "No se encontró el alumno.",
-            data: null,
         };
     } catch (error) {
         console.error("Error al obtener alumno:", error);
@@ -27,7 +24,6 @@ export const ServicesDeleteAlumno = async (id: string) => {
         return {
             statusCode: 500,
             message: error instanceof Error ? error.message : "Error interno del servidor",
-            data: null,
         };
     }
 };
