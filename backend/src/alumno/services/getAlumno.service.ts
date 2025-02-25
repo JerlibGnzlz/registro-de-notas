@@ -2,7 +2,6 @@ import { Alumno } from "../../models";
 
 export const ServicesAlumno = async (id: string) => {
     try {
-        // Buscar el alumno por su ID
         const alumno = await Alumno.findByPk(id);
 
         if (alumno) {
@@ -13,7 +12,6 @@ export const ServicesAlumno = async (id: string) => {
             };
         }
 
-        // Si no se encuentra el alumno
         return {
             statusCode: 404,
             message: "No se encontró el alumno.",

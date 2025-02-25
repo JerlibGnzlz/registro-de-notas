@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { AlumnoRegister } from "../services/createAlumno.service";
 import { IAlumno } from "../../interfaces/IAlumno";
 
-export const register = async (req: Request, res: Response): Promise<any> => {
+export const register = async (req: Request, res: Response): Promise<void> => {
     const alumno = req.body as IAlumno;
 
     try {
