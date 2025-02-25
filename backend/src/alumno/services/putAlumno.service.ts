@@ -9,7 +9,6 @@ export const ServicesActualizarAlumno = async (id: string, datosActualizados: Pa
             return {
                 statusCode: 404,
                 message: "No se encontró el alumno.",
-                data: null,
             };
         }
 

@@ -15,7 +15,6 @@ export const ServicesAlumno = async (id: string) => {
         return {
             statusCode: 404,
             message: "No se encontró el alumno.",
-            data: null,
         };
     } catch (error) {
         console.error("Error al obtener alumno:", error);
@@ -23,7 +22,6 @@ export const ServicesAlumno = async (id: string) => {
         return {
             statusCode: 500,
             message: error instanceof Error ? error.message : "Error interno del servidor",
-            data: null,
         };
     }
 };
