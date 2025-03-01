@@ -1,242 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="../../assets/img/logo_tareas.png"
-      type="image/x-icon"
-    />
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <script src="https://cdnjs.com/libraries/bodymovin"></script>
-    <title>NotasApp</title>
-  </head>
-  <body class="min-h-screen flex flex-col bg-gray-100">
-    <header class="bg-blue-600 shadow-md">
-      <nav
-        class="container mx-auto flex justify-evenly items-center p-1 text-2xl"
-      >
-        <div class="relative inline-block">
-          <img src="../../assets/img/logo_tareas.png" class="h-28" alt="" />
-          <p
-            class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
-            style="
-              text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-                1px 1px 0 black;
-            "
-          >
-            NotasApp
-          </p>
-        </div>
-
-        <!-- Menú Desktop -->
-        <ul class="hidden md:flex space-x-6 text-white">
-          <li><a href="/" class="hover:text-gray-300 transition">Inicio</a></li>
-          <li>
-            <a
-              href="./src/pages/auth/login/login.html"
-              class="hover:text-gray-300 transition"
-              >Login</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/auth/register/register.html"
-              class="hover:text-gray-300 transition"
-              >Registro</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-              class="hover:text-gray-300 transition"
-              >Alumnos</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-notas/registroNotas.html"
-              class="hover:text-gray-300 transition"
-              >Notas</a
-            >
-          </li>
-        </ul>
-
-        <!-- Botón para menú móvil -->
-        <button id="menu-toggle" class="md:hidden text-white text-2xl">
-          ☰
-        </button>
-      </nav>
-
-      <!-- Menú Móvil -->
-      <ul
-        id="mobile-menu"
-        class="hidden flex-col bg-blue-600 text-white space-y-2 px-4 md:hidden"
-      >
-        <li><a href="/" class="block py-2 hover:bg-blue-500">Inicio</a></li>
-        <li>
-          <a
-            href="./src/pages/auth/login/login.html"
-            class="block py-2 hover:bg-blue-500"
-            >Login</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/auth/register/register.html"
-            class="block py-2 hover:bg-blue-500"
-            >Registro</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-            class="block py-2 hover:bg-blue-500"
-            >Alumnos</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-notas/registroNotas.html"
-            class="block py-2 hover:bg-blue-500"
-            >Notas</a
-          >
-        </li>
-      </ul>
-    </header>
-    <button
-      id="logoutButton"
-      class="bg-red-600 text-white p-2 rounded-md hover:bg-red-500 active:bg-red-400 w-1/10 flex m-4"
-    >
-      Cerrar sesión
-    </button>
-    <div class="flex justify-center mb-4 justify-self-left">
-      <main
-        class="bg-sky-200 h-auto w-300 flex justify-center items-center rounded-md"
-      >
-        <div class="ingreso flex flex-col">
-          <header class="rounded-md bg-cyan-400 text-center w-full p-4 mt-8">
-            <h1 class="text-xl font-bold">Registro de Alumnos</h1>
-          </header>
-          <form
-            action=""
-            class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full"
-          >
-            <label for="nameInput" class="mb-1">Nombre</label>
-            <input
-              type="text"
-              class="border p-2 rounded w-3/4 px-4"
-              placeholder="Ingresa el nombre"
-              class="bg-neutral-50"
-            />
-            <label for="correo">Correo electrónico</label>
-            <input
-              type="text"
-              class="border p-2 rounded w-3/4 px-4"
-              placeholder="Ingresa un correo electrónico válido"
-            />
-            <label for="imagen">Foto del estudiante</label>
-            <input
-              type="file"
-              class="border p-2 rounded w-3/4 px-4"
-              placeholder="Ingresa la foto del estudiante"
-            />
-            <label for="nota2">Número de identificación (RUN/DNI)</label>
-            <input
-              type="text"
-              class="border p-2 rounded w-3/4 px-4"
-              placeholder="Ingresa el número de identificación"
-            />
-            <label for="nota3">Ingresa la fecha de nacimiento</label>
-            <input
-              type="date"
-              class="border p-2 rounded w-3/4 px-4"
-              placeholder="Ingresa la fecha de nacimiento"
-            />
-          </form>
-          <section>
-            <div class="flex items-center justify-center">
-              <button
-                id="registrarAlumno"
-                class="bg-blue-600 text-white p-4 rounded-md hover:bg-blue-400 active:bg-blue-200 active:text-black my-4"
-                onclick="ingresarCalificaciones()"
-              >
-                Continuar 
-              </button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calificaciones de Estudiantes</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-4 flex justify-between items-center">
+                <div class="relative inline-block">
+                    <img src="../../assets/img/logo_tareas.png" class="h-28" alt="" />
+                    <p
+                      class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
+                      style="
+                        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+                          1px 1px 0 black;
+                      "
+                    >
+                      NotasApp
+                    </p>
+                  </div>
+                <button class="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                    <svg class="h-5 w-5 mr-2" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"></path>
+                    </svg>
+                    Agregar nuevo alumno
+                </button>
             </div>
-          </section>
-        </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Alumno</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Materia</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 1</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 2</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 3</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Promedio final</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a class="flex items-center" href="../user-profile.html">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-200"></div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">
+                                            Amanda Perez 
+                                        </div>
+                                        <div class="text-sm text-gray-500">amanda@example.com</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Programación</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                8/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                7/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                9/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        8.0
+                                    </span>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                    </svg>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
 
-        <!-- Hidden es Display None, cambiará con el botón del primer formulario -->
-        <div class="mx-8 hidden" id="calificaciones">
-          <header class="rounded-md bg-cyan-400 text-center w-full p-4">
-            <h1 class="text-xl font-bold">Registro de Notas</h1>
-          </header>
-          <form
-            action=""
-            class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md w-full"
-          >
-            <label for="nameInput" class="mb-1">Nombre</label>
-            <!-- Renderizar dinámicamente acá el nombre del alumno -->
-            <select
-              name="materia"
-              id="materiaSelect"
-              class="w-full p-2 rounded-md border-1 border-black-100"
-            >
-              <option value="" disabled selected>Selecciona la Materia</option>
-              <option value="Algoritmos">Algoritmos</option>
-              <option value="DB">Bases de Datos</option>
-              <option value="ProgramacionBasica">Programación Básica</option>
-              <option value="ProgramacionAvanzada">
-                Programación Avanzada
-              </option>
-            </select>
-            <label for="nota1">Ingresa la calificación aquí</label>
-            <select
-              name="nota"
-              id="nota"
-              class="w-full p-2 rounded-md border-1 border-black-100"
-            >
-              <option value="" disabled selected>Selecciona la Nota</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </form>
-          <section>
-            <ul
-              id="materias"
-              class="flex flex-row justify-center px-4 mt-2"
-            ></ul>
-            <div class="flex items-center justify-center">
-              <button
-                class="bg-blue-600 text-white p-4 rounded-md hover:bg-blue-400 active:bg-blue-200 active:text-black my-4"
-              >
-                Registrar nueva calificación                            
-              </button>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a class="flex items-center" href="../user-profile.html">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-blue-500"></div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Ana Riquelme</div>
+                                        <div class="text-sm text-gray-500">ana@example.com</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Bases de Datos</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                9/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                8/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                10/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        9.0
+                                    </span>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                    </svg>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a class="flex items-center" href="../user-profile.html">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-200"></div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">David Gutierrez</div>
+                                        <div class="text-sm text-gray-500">david@example.com</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Algoritmos</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                7/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                6/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                8/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        7.0
+                                    </span>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                    </svg> 
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a class="flex items-center" href="../user-profile.html">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-200"></div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Felipe Gomez</div>
+                                        <div class="text-sm text-gray-500">felipe@example.com</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Estadística</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                5/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                6/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                4/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                        5.0
+                                    </span>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                    </svg>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a class="flex items-center" href="../user-profile.html">
+                                    <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center text-blue-500"></div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Victor Campos</div>
+                                        <div class="text-sm text-gray-500">victor@example.com</div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm font-medium text-gray-900">Gestión de Proyectos</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                9/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                10/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                9/10
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        9.3
+                                    </span>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path>
+                                    </svg>
+                                    <svg class="h-5 w-5 text-gray-400 cursor-pointer hover:text-gray-600" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-          </section>
         </div>
-      </main>
     </div>
-    <footer class="text-center py-4 bg-gray-800 text-white mt-auto text-2xl">
-      <p>&copy; 2025 - Todos los derechos reservados.</p>
-    </footer>
-
-    <script>
-      // Toggle menú móvil
-      document.getElementById("menu-toggle").addEventListener("click", () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-      });
-    </script>
-    <script src="./dashboard.js"></script>
-  </body>
+</body>
 </html>
+
