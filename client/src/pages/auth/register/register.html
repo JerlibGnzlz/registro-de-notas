@@ -4,114 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-    rel="shortcut icon"
-    href="../../../assets/img/logo_tareas.png"
-    type="image/x-icon"
-  />
+      rel="shortcut icon"
+      href="../../../assets/img/logo_tareas.png"
+      type="image/x-icon"
+    />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Registro de Notas</title>
   </head>
 
   <body class="min-h-screen flex flex-col bg-gray-100">
-    <header class="bg-blue-600 shadow-md mb-4">
-      <nav
-        class="container mx-auto flex justify-evenly items-center p-1 text-2xl"
-      >
-        <div class="relative inline-block">
-          <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
-          <p
-            class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
-            style="
-              text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-                1px 1px 0 black;
-            "
-          >
-            NotasApp
-          </p>
+    <!-- Main container to center and control width of both header and form -->
+    <div class="flex flex-col items-center justify-center flex-grow">
+      <!-- Header with same width as form -->
+      <header class="bg-blue-600 shadow-md w-full max-w-md rounded-t">
+        <div class="flex justify-center">
+          <div class="relative inline-block">
+            <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
+            <p
+              class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
+              style="
+                text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+                  1px 1px 0 black;
+              "
+            >
+              NotasApp
+            </p>
+          </div>
         </div>
+      </header>
 
-        <!-- Menú Desktop -->
-        <ul class="hidden md:flex space-x-6 text-white">
-          <li><a href="/" class="hover:text-gray-300 transition">Inicio</a></li>
-          <li>
-            <a
-              href="./src/pages/auth/login/login.html"
-              class="hover:text-gray-300 transition"
-              >Login</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/auth/register/register.html"
-              class="hover:text-gray-300 transition"
-              >Registro</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-              class="hover:text-gray-300 transition"
-              >Alumnos</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-notas/registroNotas.html"
-              class="hover:text-gray-300 transition"
-              >Notas</a
-            >
-          </li>
-        </ul>
-
-        <!-- Botón para menú móvil -->
-        <button id="menu-toggle" class="md:hidden text-white text-2xl">
-          ☰
-        </button>
-      </nav>
-
-      <!-- Menú Móvil -->
-      <ul
-        id="mobile-menu"
-        class="hidden flex-col bg-blue-600 text-white space-y-2 px-4 md:hidden"
-      >
-        <li><a href="/" class="block py-2 hover:bg-blue-500">Inicio</a></li>
-        <li>
-          <a
-            href="./src/pages/auth/login/login.html"
-            class="block py-2 hover:bg-blue-500"
-            >Login</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/auth/register/register.html"
-            class="block py-2 hover:bg-blue-500"
-            >Registro</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-            class="block py-2 hover:bg-blue-500"
-            >Alumnos</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-notas/registroNotas.html"
-            class="block py-2 hover:bg-blue-500"
-            >Notas</a
-          >
-        </li>
-      </ul>
-    </header>
-
-    <!-- Contenedor para centrar el formulario en la pantalla -->
-    <div class="flex items-center justify-center">
+      <!-- Form with same width as header and no gap between -->
       <form
         id="registerForm"
-        class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md px-10"
+        class="flex flex-col items-center justify-center space-y-4 bg-white p-8 shadow-md px-10 w-full max-w-md rounded-b"
       >
         <div class="flex flex-col w-full">
           <label for="nameInput" class="mb-1">Nombre</label>
@@ -165,14 +91,14 @@
 
     <footer class="text-center py-4 bg-gray-800 text-white mt-auto text-2xl">
       <p>&copy; 2025 - Todos los derechos reservados.</p>
-  </footer>
+    </footer>
 
-  <script>
+    <script>
       // Toggle menú móvil
-      document.getElementById("menu-toggle").addEventListener("click", () => {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
+      document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.getElementById("mobile-menu")?.classList.toggle("hidden");
       });
-  </script>
+    </script>
     <script type="module" src="../register/register.js"></script>
   </body>
 </html>
