@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { NotasRegister } from "./services/createNotas.service";
-import { INotas } from "../interfaces/INotas";
+import { NotasRegister } from "../services/createNotas.service";
+import { INotas } from "../../interfaces/INotas";
 
 export const register = async (req: Request, res: Response) => {
 
