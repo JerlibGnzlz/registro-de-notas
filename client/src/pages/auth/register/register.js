@@ -49,3 +49,38 @@ form.addEventListener("submit", async (event) => {
         });
     }
 });
+
+      // Toggle menú móvil
+      document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.getElementById("mobile-menu")?.classList.toggle("hidden");
+      });
+      
+      // Toggle password visibility for first password field
+      document.getElementById("togglePassword1")?.addEventListener("click", () => {
+        const passwordInput = document.getElementById("passwordInput");
+        const eyeIcon = document.getElementById("eyeIcon1");
+        const eyeOffIcon = document.getElementById("eyeOffIcon1");
+        
+        // Toggle the type attribute
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+        
+        // Toggle the icon
+        eyeIcon.classList.toggle("hidden");
+        eyeOffIcon.classList.toggle("hidden");
+      });
+      
+      // Toggle password visibility for confirm password field
+      document.getElementById("togglePassword2")?.addEventListener("click", () => {
+        const confirmPasswordInput = document.getElementById("confirmPasswordInput");
+        const eyeIcon = document.getElementById("eyeIcon2");
+        const eyeOffIcon = document.getElementById("eyeOffIcon2");
+        
+        // Toggle the type attribute
+        const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+        confirmPasswordInput.setAttribute("type", type);
+        
+        // Toggle the icon
+        eyeIcon.classList.toggle("hidden");
+        eyeOffIcon.classList.toggle("hidden");
+      });
