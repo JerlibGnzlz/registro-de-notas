@@ -8,7 +8,7 @@ form.addEventListener("submit", async (event) => {
     const name = document.querySelector("#nameInput").value.trim();
     const email = document.querySelector("#emailInput").value.trim();
     const password = document.querySelector("#passwordInput").value.trim();
-    const confirmPassword = document.querySelector("#passwordConfirm").value.trim();
+    const confirmPassword = document.querySelector("#confirmPasswordInput").value.trim();
 
     if (!validarRegister(name, email, password, confirmPassword)) return;
 
