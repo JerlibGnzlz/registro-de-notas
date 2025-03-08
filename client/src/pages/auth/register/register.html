@@ -11,16 +11,42 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Registro de Notas</title>
+    <style>
+      /* Subtle animations for inputs */
+      input:focus {
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+      }
+      
+      /* Hover effect for the toggle buttons */
+      .toggle-btn:hover svg {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+      }
+      
+      /* Subtle animation for the submit button */
+      #registerButton {
+        transition: all 0.3s ease;
+      }
+      
+      #registerButton:hover {
+        transform: translateY(-2px);
+      }
+      
+      #registerButton:active {
+        transform: translateY(1px);
+      }
+    </style>
   </head>
 
-  <body class="min-h-screen flex flex-col bg-gray-100">
+  <body class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-200">
     <!-- Main container to center and control width of both header and form -->
-    <div class="flex flex-col items-center justify-center flex-grow">
+    <div class="flex flex-col items-center justify-center flex-grow p-4">
       <!-- Header with same width as form -->
-      <header class="bg-blue-600 shadow-md w-full max-w-md rounded-t">
-        <div class="flex justify-center">
+      <header class="bg-gradient-to-r from-blue-600 to-blue-700 shadow-lg w-full max-w-md rounded-t-lg overflow-hidden">
+        <div class="flex justify-center py-2">
           <div class="relative inline-block">
-            <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
+            <img src="../../../assets/img/logo_tareas.png" class="h-28 drop-shadow-md" alt="" />
             <p
               class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
               style="
@@ -37,41 +63,41 @@
       <!-- Form with same width as header and no gap between -->
       <form
         id="registerForm"
-        class="flex flex-col items-center justify-center space-y-4 bg-white p-8 shadow-md px-10 w-full max-w-md rounded-b"
+        class="flex flex-col items-center justify-center space-y-5 bg-white p-8 shadow-xl px-10 w-full max-w-md rounded-b-lg border border-gray-100"
       >
         <div class="flex flex-col w-full">
-          <label for="nameInput" class="mb-1 text-center">Nombre</label>
+          <label for="nameInput" class="mb-1 text-center font-medium text-gray-700">Nombre</label>
           <input
             type="text"
             id="nameInput"
-            class="border p-2 rounded text-center"
+            class="border border-gray-300 p-2 rounded-lg text-center w-full focus:outline-none focus:border-blue-500"
             placeholder="💬 Juan Perez"
           />
         </div>
 
         <div class="flex flex-col w-full">
-          <label for="emailInput" class="mb-1 text-center">Correo Electrónico</label>
+          <label for="emailInput" class="mb-1 text-center font-medium text-gray-700">Correo Electrónico</label>
           <input
             type="email"
             id="emailInput"
-            class="border p-2 rounded text-center"
+            class="border border-gray-300 p-2 rounded-lg text-center w-full focus:outline-none focus:border-blue-500"
             placeholder="📧 correo@correo.com"
           />
         </div>
 
         <div class="flex flex-col w-full">
-          <label for="passwordInput" class="mb-1 text-center">Contraseña</label>
-          <div class="relative w-full">
+          <label for="passwordInput" class="mb-1 text-center font-medium text-gray-700">Contraseña</label>
+          <div class="relative w-full group">
             <input
               type="password"
               id="passwordInput"
-              class="border p-2 rounded text-center w-full"
+              class="border border-gray-300 p-2 rounded-lg text-center w-full focus:outline-none focus:border-blue-500"
               placeholder="🔑 ******"
             />
             <button 
               type="button" 
               id="togglePassword1" 
-              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-800 focus:outline-none"
+              class="toggle-btn absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none"
             >
               <!-- Eye icon (password hidden) -->
               <svg id="eyeIcon1" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,18 +113,18 @@
         </div>
 
         <div class="flex flex-col w-full">
-          <label for="confirmPasswordInput" class="mb-1 text-center">Confirmar Contraseña</label>
-          <div class="relative w-full">
+          <label for="confirmPasswordInput" class="mb-1 text-center font-medium text-gray-700">Confirmar Contraseña</label>
+          <div class="relative w-full group">
             <input
               type="password"
               id="confirmPasswordInput"
-              class="border p-2 rounded text-center w-full"
+              class="border border-gray-300 p-2 rounded-lg text-center w-full focus:outline-none focus:border-blue-500"
               placeholder="🔑 ******"
             />
             <button 
               type="button" 
               id="togglePassword2" 
-              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-800 focus:outline-none"
+              class="toggle-btn absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none"
             >
               <!-- Eye icon (password hidden) -->
               <svg id="eyeIcon2" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,12 +140,15 @@
         </div>
 
         <button
-          type="submit"
-          id="registerButton"
-          class="mt-2 bg-blue-500 text-white px-8 py-2 rounded hover:bg-blue-600 active:bg-blue-700 rounded-x2 text-xl"
-        >
-          Enviar
-        </button>
+        type="submit"
+        id="registerButton"
+        class="mt-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 active:from-blue-700 active:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg text-xl flex items-center justify-center"
+      >
+        <span>Registrarse</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
       </form>
     </div>
 
