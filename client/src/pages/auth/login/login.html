@@ -14,133 +14,60 @@
   </head>
 
   <body class="min-h-screen flex flex-col bg-gray-100">
-    <header class="bg-blue-600 shadow-md mb-4">
-      <nav
-        class="container mx-auto flex justify-evenly items-center p-1 text-2xl"
-      >
-        <div class="relative inline-block">
-          <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
-          <p
-            class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
-            style="
-              text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-                1px 1px 0 black;
-            "
-          >
-            NotasApp
-          </p>
-        </div>
-
-        <!-- Menú Desktop -->
-        <ul class="hidden md:flex space-x-6 text-white">
-          <li><a href="/" class="hover:text-gray-300 transition">Inicio</a></li>
-          <li>
-            <a
-              href="./src/pages/auth/login/login.html"
-              class="hover:text-gray-300 transition"
-              >Login</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/auth/register/register.html"
-              class="hover:text-gray-300 transition"
-              >Registro</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-              class="hover:text-gray-300 transition"
-              >Alumnos</a
-            >
-          </li>
-          <li>
-            <a
-              href="./src/pages/dashboard/registro-notas/registroNotas.html"
-              class="hover:text-gray-300 transition"
-              >Notas</a
-            >
-          </li>
-        </ul>
-
-        <!-- Botón para menú móvil -->
-        <button id="menu-toggle" class="md:hidden text-white text-2xl">
-          ☰
-        </button>
-      </nav>
-
-      <!-- Menú Móvil -->
-      <ul
-        id="mobile-menu"
-        class="hidden flex-col bg-blue-600 text-white space-y-2 px-4 md:hidden"
-      >
-        <li><a href="/" class="block py-2 hover:bg-blue-500">Inicio</a></li>
-        <li>
-          <a
-            href="./src/pages/auth/login/login.html"
-            class="block py-2 hover:bg-blue-500"
-            >Login</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/auth/register/register.html"
-            class="block py-2 hover:bg-blue-500"
-            >Registro</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-alumnos/registroAlumnos.html"
-            class="block py-2 hover:bg-blue-500"
-            >Alumnos</a
-          >
-        </li>
-        <li>
-          <a
-            href="./src/pages/dashboard/registro-notas/registroNotas.html"
-            class="block py-2 hover:bg-blue-500"
-            >Notas</a
-          >
-        </li>
-      </ul>
-    </header>
-
-    <!-- Contenedor para centrar el formulario en la pantalla -->
-    <div class="flex items-center justify-center">
-      <form
-        id="loginForm"
-        class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded shadow-md"
-      >
-        <div class="flex flex-col w-full">
-          <label for="emailInput" class="mb-1">Correo Electrónico</label>
-          <input
-            type="email"
-            id="emailInput"
-            class="border p-2 rounded"
-            placeholder="📧 Ingresa tu correo"
-          />
-        </div>
-
-        <div class="flex flex-col w-full">
-          <label for="passwordInput" class="mb-1">Contraseña</label>
-          <input
-            type="password"
-            id="passwordInput"
-            class="border p-2 rounded"
-            placeholder="🔑 Ingresa tu contraseña"
-          />
-        </div>
-
-        <button
-          type="submit"
-          id="registerButton"
-          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 active:bg-blue-700 rounded-x2"
+   
+    <!-- Contenedor flex que ocupa todo el espacio disponible antes del footer -->
+    <div class="flex-1 flex items-center justify-center p-4">
+      <!-- Contenedor para el formulario y el header -->
+      <div class="flex flex-col items-center">
+        <header class="bg-blue-600 shadow-md w-full max-w-md rounded-t">
+          <div class="flex justify-center">
+            <div class="relative inline-block">
+              <img src="../../../assets/img/logo_tareas.png" class="h-28" alt="" />
+              <p
+                class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold"
+                style="
+                  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+                    1px 1px 0 black;
+                "
+              >
+                NotasApp
+              </p>
+            </div>
+          </div>
+        </header>
+        <form
+          id="loginForm"
+          class="flex flex-col items-center justify-center space-y-4 bg-white p-8 rounded-b shadow-md w-full max-w-md"
         >
-          Enviar
-        </button>
-      </form>
+          <div class="flex flex-col w-full">
+            <label for="emailInput" class="mb-1 text-center">Correo Electrónico</label>
+            <input
+              type="email"
+              id="emailInput"
+              class="border p-2 rounded text-center"
+              placeholder="📧correo@correo.com"
+            />
+          </div>
+
+          <div class="flex flex-col w-full">
+            <label for="passwordInput" class="mb-1 text-center">Contraseña</label>
+            <input
+              type="password"
+              id="passwordInput"
+              class="border p-2 rounded text-center"
+              placeholder="🔑 ******"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="registerButton"
+            class="mt-2 bg-blue-500 text-white px-8 py-4 rounded hover:bg-blue-600 active:bg-blue-700 rounded-x2 text-xl"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
     </div>
 
     <footer class="text-center py-4 bg-gray-800 text-white mt-auto text-2xl">
@@ -149,8 +76,8 @@
 
     <script>
       // Toggle menú móvil
-      document.getElementById("menu-toggle").addEventListener("click", () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
+      document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.getElementById("mobile-menu")?.classList.toggle("hidden");
       });
     </script>
     <script src="../login/login.js" type="module"></script>
